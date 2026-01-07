@@ -19,8 +19,8 @@
   # ==========================================
   # 用户配置
   # ==========================================
-  # Declare the user that will run `darwin-rebuild`
-  # This is required for some "user-mode" preference settings in `system.defaults`
+  # 声明将运行 `darwin-rebuild` 的用户
+  # 这对于 `system.defaults` 中的某些“用户模式”偏好设置是必需的
   system.primaryUser = username;
 
   users.users.${username} = {

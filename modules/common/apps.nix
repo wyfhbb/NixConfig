@@ -1,13 +1,13 @@
 {pkgs, ...}:{
-  # Allow unfree packages
+  # 允许安装不自由的软件包
   nixpkgs.config.allowUnfree = true;
 
-  # Install packages from nix's official package repository.
+  # 从 nix 的官方软件包仓库安装软件包。
   #
-  # The packages installed here are available to all users, and are reproducible across machines, and are rollbackable.
-  # But on macOS, it's less stable than homebrew.
+  # 这里安装的软件包对所有用户可用，并且在不同机器上是可复现的，也是可回滚的。
+  # 但在 macOS 上，它不如 Homebrew 稳定。
   #
-  # Related Discussion: https://discourse.nixos.org/t/darwin-again/29331
+  # 相关讨论: https://discourse.nixos.org/t/darwin-again/29331
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -22,7 +22,7 @@
   programs.zsh.enable = true;
   fonts = {
     packages = with pkgs; [
-      # jetbrains
+      # JetBrains 系列
       jetbrains-mono
       nerd-fonts.jetbrains-mono
 

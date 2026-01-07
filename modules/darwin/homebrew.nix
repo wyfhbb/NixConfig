@@ -2,22 +2,22 @@
 { config, pkgs, ... }:
 
 {
-  # The apps installed by homebrew are not managed by nix, and not reproducible!
-  # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
+  # Homebrew 安装的应用程序不由 Nix 管理，且不可复现！
+  # 但在 macOS 上，Homebrew 拥有比 nixpkgs 多得多的应用程序选择，尤其是对于 GUI 应用程序！
   homebrew = {
     enable = true;
 
     onActivation = {
-      autoUpdate = true; # Fetch the newest stable branch of Homebrew's git repo
-      upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
-      # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
+      autoUpdate = true; # 获取 Homebrew git 仓库的最新稳定分支
+      upgrade = true; # 升级过时的 casks、formulae 和 App Store 应用
+      # 'zap': 卸载所有不在生成的 Brewfile 中列出的 formulae（及相关文件）
       cleanup = "zap";
     };
 
-    # Applications to install from Mac App Store using mas.
-    # You need to install all these Apps manually first so that your apple account have records for them.
-    # otherwise Apple Store will refuse to install them.
-    # For details, see https://github.com/mas-cli/mas
+    # 使用 mas 从 Mac App Store 安装的应用程序。
+    # 你需要首先手动安装所有这些应用程序，以便你的 Apple 账户有它们的记录。
+    # 否则 Apple Store 将拒绝安装它们。
+    # 详情请参阅 https://github.com/mas-cli/mas
     masApps = {
       # Xcode = 497799835;
       onedrive = 823766827;
@@ -33,7 +33,7 @@
     };
 
     brews = [
-      "curl" # no not install curl via nixpkgs, it's not working well on macOS!
+      "curl" # 不要通过 nixpkgs 安装 curl，它在 macOS 上工作不正常！
     ];
 
     casks = [

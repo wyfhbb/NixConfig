@@ -22,7 +22,7 @@
     stateVersion = 6;
 
     defaults = {
-      menuExtraClock.Show24Hour = true; # show 24 hour clock
+      menuExtraClock.Show24Hour = true; # 显示 24 小时制时钟
 
       dock = {
         # 自定义触发角 (Hot Corners, 鼠标移动到屏幕角落时触发的动作)

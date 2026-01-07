@@ -4,7 +4,7 @@
   ];
 
   programs = {
-    # modern vim
+    # 现代 vim
     neovim = {
       enable = true;
       defaultEditor = true;
@@ -26,7 +26,7 @@
       ];
     };
 
-    # terminal file manager
+    # 终端文件管理器
     yazi = {
       enable = true;
       enableZshIntegration = true;
