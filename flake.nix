@@ -4,6 +4,15 @@
   # ============================================
   # inputs: 声明这个 flake 依赖的外部资源
   # ============================================
+  
+  nixConfig = {
+    substituters = [
+      # Query the mirror of USTC first, and then the official cache.
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://cache.nixos.org"
+    ];
+  };
+
   inputs = {
     # nixpkgs: Nix 官方软件包仓库（所有平台共用一个版本，简化配置）
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";

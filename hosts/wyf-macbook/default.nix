@@ -7,6 +7,7 @@
     ../../modules/common/apps.nix
     ../../modules/darwin/system.nix
     ../../modules/darwin/homebrew.nix
+    ../../modules/darwin/homebrew-mirror.nix
   ];
 
   # ==========================================
