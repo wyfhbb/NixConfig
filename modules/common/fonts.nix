@@ -30,8 +30,5 @@
       liberation_ttf         # Liberation 字体族
       dejavu_fonts           # DejaVu 字体族
     ];
-
-    # 启用 fontconfig
-    enableDefaultPackages = true;
   };
 }

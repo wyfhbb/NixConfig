@@ -11,11 +11,6 @@
   #
   # 相关讨论: https://discourse.nixos.org/t/darwin-again/29331
   environment.systemPackages = with pkgs; [
-      git
-      just
-      fastfetch
-      htop
-      tree
   ];
   # Homebrew 安装的应用程序不由 Nix 管理，且不可复现！
   # 但在 macOS 上，Homebrew 拥有比 nixpkgs 多得多的应用程序选择，尤其是对于 GUI 应用程序！

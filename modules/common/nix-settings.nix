@@ -6,6 +6,12 @@
 }: {
   environment.variables.EDITOR = "nvim";
   programs.zsh.enable = true;
+  environment.systemPackages = with pkgs; [
+    just
+    fastfetch
+    htop
+    tree
+  ];
   nix = {
     # Determinate Nix 使用自己的守护进程来管理 Nix 安装,
     # 这会与 nix-darwin 的原生 Nix 管理冲突。
