@@ -4,9 +4,9 @@
 {
   imports = [
     ../../modules/common/nix-settings.nix
-    ../../modules/common/apps.nix
+    ../../modules/common/fonts.nix
     ../../modules/darwin/system.nix
-    ../../modules/darwin/homebrew.nix
+    ../../modules/darwin/apps.nix
     ../../modules/darwin/homebrew-mirror.nix
   ];
 

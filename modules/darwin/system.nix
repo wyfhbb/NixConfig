@@ -11,10 +11,6 @@
 #
 ###################################################################################
 {
-  imports = [
-    ../common/apps.nix
-  ];
-  # TODO: 添加 macOS 特定配置
   # 允许使用 TouchID 进行 sudo 身份验证 (在终端使用 sudo 时可用指纹解锁)
   security.pam.services.sudo_local.touchIdAuth = true;
 

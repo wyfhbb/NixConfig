@@ -3,7 +3,7 @@
 
 {
   imports = [
-    ../../modules/common/apps.nix
+    ../../modules/common/fonts.nix
     ../../modules/common/nix-settings.nix
     ../../modules/nixos/core.nix
   ];

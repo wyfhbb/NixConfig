@@ -2,6 +2,16 @@
 { config, pkgs, ... }:
 
 {
+  # 允许安装不自由的软件包
+  nixpkgs.config.allowUnfree = true;
+  # 从 nix 的官方软件包仓库安装软件包。
+  #
+  # 这里安装的软件包对所有用户可用，并且在不同机器上是可复现的，也是可回滚的。
+  # 但在 macOS 上，它不如 Homebrew 稳定。
+  #
+  # 相关讨论: https://discourse.nixos.org/t/darwin-again/29331
+  environment.systemPackages = with pkgs; [
+  ];
   # Homebrew 安装的应用程序不由 Nix 管理，且不可复现！
   # 但在 macOS 上，Homebrew 拥有比 nixpkgs 多得多的应用程序选择，尤其是对于 GUI 应用程序！
   homebrew = {
@@ -34,6 +44,15 @@
 
     brews = [
       "curl" # 不要通过 nixpkgs 安装 curl，它在 macOS 上工作不正常！
+      "git"
+      "neovim"
+      "git"
+      "just"
+      "tmux"
+      "wget"
+      "fastfetch"
+      "htop"
+      "tree"
     ];
 
     casks = [
