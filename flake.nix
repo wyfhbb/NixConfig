@@ -15,7 +15,7 @@
 
   inputs = {
     # nixpkgs: Nix 官方软件包仓库（所有平台共用一个版本，简化配置）
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
     # home-manager: 用户环境管理工具（管理 dotfiles、软件等）
     home-manager = {
