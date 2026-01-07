@@ -11,6 +11,11 @@
   #
   # 相关讨论: https://discourse.nixos.org/t/darwin-again/29331
   environment.systemPackages = with pkgs; [
+      git
+      just
+      fastfetch
+      htop
+      tree
   ];
   # Homebrew 安装的应用程序不由 Nix 管理，且不可复现！
   # 但在 macOS 上，Homebrew 拥有比 nixpkgs 多得多的应用程序选择，尤其是对于 GUI 应用程序！
@@ -37,22 +42,12 @@
       microsoft-powerpoint = 462062816;
       # https://apps.apple.com/us/app/microsoft-word/id462054704?mt=12 Microsoft Word
       microsoft-word = 462054704;
-      # https://apps.apple.com/us/app/wechat/id836500024?mt=12WeChat Wechat
-      wechat = 836500024;
 
     };
 
     brews = [
       "curl" # 不要通过 nixpkgs 安装 curl，它在 macOS 上工作不正常！
-      "git"
-      "neovim"
-      "git"
-      "just"
-      "tmux"
       "wget"
-      "fastfetch"
-      "htop"
-      "tree"
     ];
 
     casks = [
@@ -61,6 +56,7 @@
       "ghostty"
       "clash-party"
       "qq"
+      "wechat"
       "termius"
       "localsend"
       "wechatwork"
