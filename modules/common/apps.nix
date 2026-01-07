@@ -17,6 +17,7 @@
     fastfetch
     htop
     tree
+    curl
   ];
   environment.variables.EDITOR = "nvim";
   programs.zsh.enable = true;

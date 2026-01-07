@@ -15,17 +15,17 @@
 
   inputs = {
     # nixpkgs: Nix 官方软件包仓库（所有平台共用一个版本，简化配置）
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-25.11";
 
     # home-manager: 用户环境管理工具（管理 dotfiles、软件等）
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";  # 让 home-manager 使用我们的 nixpkgs
     };
 
     # nix-darwin: macOS 系统管理工具
     darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:LnL7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";  # 让 darwin 使用我们的 nixpkgs
     };
 
@@ -34,7 +34,7 @@
 
     # NixOS-WSL: 在 WSL 中运行 NixOS 的特殊模块
     nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
+      url = "github:nix-community/NixOS-WSL/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -105,7 +105,7 @@
       # ===== WSL 配置 =====
       wsl =
         let
-          hostname = "wsl";
+          hostname = "nixwsl";
           system = "x86_64-linux";
         in
         nixpkgs.lib.nixosSystem {
