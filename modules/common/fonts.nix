@@ -24,7 +24,7 @@
       source-code-pro        # Source Code Pro
 
       # Emoji 和符号
-      noto-fonts-emoji       # Emoji 支持
+      noto-fonts-color-emoji # Emoji 支持
 
       # 通用字体
       liberation_ttf         # Liberation 字体族
