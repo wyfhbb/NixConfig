@@ -4,7 +4,7 @@
   # ============================================
   # inputs: 声明这个 flake 依赖的外部资源
   # ============================================
-  
+
   nixConfig = {
     substituters = [
       # Query the mirror of USTC first, and then the official cache.
@@ -83,7 +83,7 @@
               # home-manager 配置
               home-manager.useGlobalPkgs = true;      # 使用系统级的 pkgs
               home-manager.useUserPackages = true;    # 用户包安装到用户环境
-              home-manager.users.${username} = import ./home/profiles/wyf-macos.nix;
+              home-manager.users.${username} = import ./home/profiles/macos.nix;
             }
 
             # 集成 nix-homebrew
@@ -126,7 +126,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./home/profiles/wyf-minimal.nix;
+              home-manager.users.${username} = import ./home/profiles/wsl.nix;
             }
           ];
         };
@@ -152,7 +152,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./home/profiles/wyf-minimal.nix;
+              home-manager.users.${username} = import ./home/profiles/server.nix;
             }
           ];
         };
@@ -178,7 +178,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./home/profiles/wyf-full.nix;
+              home-manager.users.${username} = import ./home/profiles/desktop.nix;
             }
           ];
         };
