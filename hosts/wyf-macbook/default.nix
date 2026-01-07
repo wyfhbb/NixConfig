@@ -19,6 +19,10 @@
   # ==========================================
   # 用户配置
   # ==========================================
+  # Declare the user that will run `darwin-rebuild`
+  # This is required for some "user-mode" preference settings in `system.defaults`
+  system.primaryUser = username;
+
   users.users.${username} = {
     home = "/Users/${username}";
     description = username;
