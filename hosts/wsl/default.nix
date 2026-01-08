@@ -1,5 +1,11 @@
 # WSL 主机配置
-{ config, pkgs, username, hostname, ... }:
+{
+  config,
+  pkgs,
+  username,
+  hostname,
+  ...
+}:
 
 {
   imports = [
@@ -19,10 +25,10 @@
   programs.nix-ld.enable = true;
 
   users.users.${username} = {
-      isNormalUser = true;
-      extraGroups = ["wheel"];
-      shell = pkgs.zsh;
-      # initialPassword = "password"; # 如果需要，可以设置初始密码
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    shell = pkgs.zsh;
+    # initialPassword = "password"; # 如果需要，可以设置初始密码
   };
   system.stateVersion = "25.11";
 }

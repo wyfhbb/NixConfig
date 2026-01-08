@@ -1,5 +1,11 @@
 # VPS 服务器配置
-{ config, pkgs, username, hostname, ... }:
+{
+  config,
+  pkgs,
+  username,
+  hostname,
+  ...
+}:
 
 {
   # TODO: 导入通用模块和服务器模块

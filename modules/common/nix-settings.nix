@@ -4,7 +4,8 @@
   lib,
   username,
   ...
-}: {
+}:
+{
   environment.variables.EDITOR = "nvim";
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
@@ -41,7 +42,10 @@
       ];
 
       # 将当前用户设置为受信任用户,允许使用自定义的 substituters
-      trusted-users = [ "root" username ];
+      trusted-users = [
+        "root"
+        username
+      ];
 
       # 禁用自动优化存储,因为存在以下问题:
       #   https://github.com/NixOS/nix/issues/7273

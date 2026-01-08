@@ -66,7 +66,7 @@
         NSAutomaticSpellingCorrectionEnabled = false; # 禁用自动拼写纠正
         NSNavPanelExpandedStateForSaveMode = true; # 默认展开保存面板 (保存文件时的详细路径选择页)
         NSNavPanelExpandedStateForSaveMode2 = true;
-        NSWindowShouldDragOnGesture = true;  # 启用 Control+Command 拖移窗口
+        NSWindowShouldDragOnGesture = true; # 启用 Control+Command 拖移窗口
       };
 
       # 自定义更多 nix-darwin 不直接支持的设置

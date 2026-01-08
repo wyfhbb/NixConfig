@@ -9,19 +9,19 @@
       defaultEditor = true;
       vimAlias = true;
       viAlias = true;
-      
+
       extraConfig = ''
         set number relativenumber
         set expandtab tabstop=2 shiftwidth=2
         set ignorecase smartcase
         set clipboard=unnamedplus
       '';
-      
+
       plugins = with pkgs.vimPlugins; [
-        nvim-treesitter.withAllGrammars  # 语法高亮
-        telescope-nvim                    # 模糊搜索文件
-        lualine-nvim                      # 状态栏
-        catppuccin-nvim                   # 主题
+        nvim-treesitter.withAllGrammars # 语法高亮
+        telescope-nvim # 模糊搜索文件
+        lualine-nvim # 状态栏
+        catppuccin-nvim # 主题
       ];
     };
 
@@ -30,7 +30,7 @@
       mouse = true;
       baseIndex = 1;
       terminal = "screen-256color";
-      
+
       extraConfig = ''
         # 快速重载配置
         bind r source-file ~/.config/tmux/tmux.conf \; display "配置已重载"
@@ -49,11 +49,11 @@
         set -g status-style bg=default,fg=white
         set -g status-left-length 40
         set -g status-right "#[fg=cyan]%Y-%m-%d %H:%M"
-        
+
         # 启用真彩色
         set -ga terminal-overrides ",*256col*:Tc"
       '';
-      
+
       plugins = with pkgs.tmuxPlugins; [
         sensible
         yank
@@ -80,7 +80,10 @@
 
       oh-my-zsh = {
         enable = true;
-        plugins = ["git" "tmux"];
+        plugins = [
+          "git"
+          "tmux"
+        ];
         theme = "";
       };
 

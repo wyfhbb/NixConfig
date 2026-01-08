@@ -1,5 +1,11 @@
 # 桌面 Linux 配置
-{ config, pkgs, username, hostname, ... }:
+{
+  config,
+  pkgs,
+  username,
+  hostname,
+  ...
+}:
 
 {
   # TODO: 导入通用模块和桌面模块

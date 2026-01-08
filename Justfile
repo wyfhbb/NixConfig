@@ -128,7 +128,7 @@ gc:
 # 格式化仓库中的所有 nix 文件
 [group('nix')]
 fmt:
-  nix fmt
+  nix fmt .
 
 # 显示 nix store 中的所有自动 gc roots
 [group('nix')]

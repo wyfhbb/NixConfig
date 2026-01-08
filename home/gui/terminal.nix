@@ -1,5 +1,6 @@
 # 终端应用配置（桌面和 macOS）
-{...}: {
+{ ... }:
+{
   xdg.configFile."ghostty/config".text = ''
     font-family = "MesloLGS NF"
     font-size = 14.6
@@ -11,10 +12,10 @@
     confirm-close-surface = false
     # 光标轨迹特效相关文件
     custom-shader = ${../../config/cursor_smear.glsl}
-    
+
     background = #1F1F1F
     foreground = #CCCCCC
-    
+
     palette = 0=#000000
     palette = 1=#d6181b
     palette = 2=#6A9955
@@ -31,12 +32,12 @@
     palette = 13=#d670d6
     palette = 14=#9cdcfe
     palette = 15=#e5e5e5
-    
+
     window-padding-x = 5
     window-padding-y = 5
     background-opacity = 0.7
     background-blur = true
-    
+
     # Mac OS specific
     macos-titlebar-style = transparent
   '';

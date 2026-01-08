@@ -1,5 +1,11 @@
 # macOS (Darwin) 主机配置
-{ config, pkgs, username, hostname, ... }:
+{
+  config,
+  pkgs,
+  username,
+  hostname,
+  ...
+}:
 
 {
   imports = [
