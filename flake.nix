@@ -149,7 +149,7 @@
           };
 
         # ===== VPS 服务器配置 =====
-        vps-server =
+        vps =
           let
             hostname = "vps-server";
             system = "x86_64-linux";
@@ -175,9 +175,9 @@
           };
 
         # ===== 桌面 Linux 配置 =====
-        desktop-linux =
+        desktop =
           let
-            hostname = "desktop-linux";
+            hostname = "nixos-wyf";
             system = "x86_64-linux";
           in
           nixpkgs.lib.nixosSystem {

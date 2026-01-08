@@ -8,6 +8,8 @@
 {
   environment.variables.EDITOR = "nvim";
   programs.zsh.enable = true;
+  # 允许安装不自由的软件包
+  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     just
     fastfetch

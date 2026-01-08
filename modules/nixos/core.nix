@@ -6,8 +6,6 @@
     wget
     curl
   ];
-  # 允许安装不自由的软件包
-  nixpkgs.config.allowUnfree = true;
   services.openssh = {
     enable = true;
     settings = {

@@ -57,7 +57,7 @@ init-linux hostname:
   echo "正在进行首次系统初始化..."
   # 临时启用 flake 和 nix-command 功能进行首次构建
   sudo nixos-rebuild switch --flake .#{{hostname}} \
-    --extra-experimental-features 'nix-command flakes' \
+    -experimental-features 'nix-command flakes' \
     --impure
   echo "首次初始化完成！后续可以使用 'just rebuild {{hostname}}' 命令"
 
@@ -65,25 +65,25 @@ init-linux hostname:
 # 用法: just rebuild wsl | just rebuild vps-server | just rebuild desktop-linux
 [group('Linux')]
 rebuild hostname:
-  sudo nixos-rebuild switch --flake .#{{hostname}}
+  sudo nixos-rebuild switch --flake .#{{hostname}}  --impure
 
 # 调试模式构建 Linux 配置（显示详细信息和错误追踪）
 # 用法: just rebuild-debug wsl | just rebuild-debug vps-server | just rebuild-debug desktop-linux
 [group('Linux')]
 rebuild-debug hostname:
-  sudo nixos-rebuild switch --flake .#{{hostname}} --show-trace --verbose
+  sudo nixos-rebuild switch --flake .#{{hostname}} --show-trace --verbose  --impure
 
 # 测试 Linux 配置（不切换）
 # 用法: just test wsl | just test vps-server | just test desktop-linux
 [group('Linux')]
 test hostname:
-  sudo nixos-rebuild test --flake .#{{hostname}}
+  sudo nixos-rebuild test --flake .#{{hostname}}  --impure
 
 # 构建 Linux 配置（不切换）
 # 用法: just build wsl | just build vps-server | just build desktop-linux
 [group('Linux')]
 build hostname:
-  sudo nixos-rebuild build --flake .#{{hostname}}
+  sudo nixos-rebuild build --flake .#{{hostname}} --impure
 
 ############################################################################
 #

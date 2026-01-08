@@ -5,7 +5,6 @@
   imports = [
     ../common/cli-apps.nix
     ../common/core-tools.nix
-    ../gui/terminal.nix
   ];
 
   home = {

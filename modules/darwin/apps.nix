@@ -2,8 +2,6 @@
 { config, pkgs, ... }:
 
 {
-  # 允许安装不自由的软件包
-  nixpkgs.config.allowUnfree = true;
   # 从 nix 的官方软件包仓库安装软件包。
   #
   # 这里安装的软件包对所有用户可用，并且在不同机器上是可复现的，也是可回滚的。
