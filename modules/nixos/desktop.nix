@@ -61,6 +61,13 @@
   };
 
 
+  # 字体配置
+  fonts.fontconfig.defaultFonts = {
+    serif = [ "PingFang SC" "Noto Serif" ];
+    sansSerif = [ "PingFang SC" "Noto Sans" ];
+    monospace = [ "Noto Sans Mono" "PingFang SC" ];
+  };
+
   # 在 X11 中配置键盘布局
   services.xserver.xkb = {
     layout = "us";

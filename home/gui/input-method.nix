@@ -18,9 +18,13 @@ in
   home.file = {
     # 将小鹤双拼配置链接到 ~/.local/share/fcitx5
     ".local/share/fcitx5".source = "${xiaoheFcitx5Config}/fcitx5";
+  };
 
+  # 单独配置 fcitx5 配置目录，使用 force 选项确保文件被创建
+  xdg.configFile = {
     # ClassicUI 配置
-    ".config/fcitx5/conf/classicui.conf".text = ''
+    "fcitx5/conf/classicui.conf" = {
+      text = ''
       # Vertical Candidate List
       Vertical Candidate List=False
       # Use mouse wheel to go to prev or next page
@@ -55,7 +59,9 @@ in
       ForceWaylandDPI=0
       # Enable fractional scale under Wayland
       EnableFractionalScale=True
-    '';
+      '';
+      force = true;  # 强制创建文件，即使目录不存在
+    };
   };
 
   # 设置 fcitx5 环境变量

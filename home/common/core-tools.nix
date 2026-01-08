@@ -97,7 +97,7 @@
 
       initContent = ''
         # Powerlevel10k 配置
-        source ${../../config/p10k.zsh}
+        source ${./p10k.zsh}
       '';
     };
   };

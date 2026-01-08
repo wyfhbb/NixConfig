@@ -13,7 +13,7 @@ let
     confirm-close-surface = false
     
     # 光标轨迹特效（保持你的路径引用）
-    custom-shader = ${../../config/cursor_smear.glsl}
+    custom-shader = ${./cursor_smear.glsl}
 
     background = #1F1F1F
     foreground = #CCCCCC
