@@ -1,5 +1,5 @@
 # 桌面环境配置
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # TODO: 添加桌面环境配置
@@ -30,6 +30,8 @@
     ghostty
     # GNOM
     gnomeExtensions.appindicator  # 托盘图标支持
+    # Noctalia Shell
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # 选择本地化属性。
@@ -92,6 +94,9 @@
   # 启用 GNOME 桌面环境。
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+
+  # 启用 Niri 窗口管理器（Wayland compositor）
+  programs.niri.enable = true;
 
   # 某些程序需要 SUID 包装器，可进一步配置，或在用户会话中启动。
   # programs.mtr.enable = true;

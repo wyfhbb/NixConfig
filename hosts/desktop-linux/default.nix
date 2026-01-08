@@ -26,6 +26,11 @@
   # 启用网络
   networking.networkmanager.enable = true;
 
+  # Noctalia 必需的系统服务
+  hardware.bluetooth.enable = true;
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+
   # 增加WSL对于VSCode的支持
   programs.nix-ld.enable = true;
 

@@ -37,6 +37,12 @@
       url = "github:nix-community/NixOS-WSL/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Noctalia: Wayland 桌面 Shell（配合 Niri 使用）
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # ============================================
@@ -50,6 +56,7 @@
       darwin,
       nix-homebrew,
       nixos-wsl,
+      noctalia,
       ...
     }@inputs:
     let
@@ -184,7 +191,7 @@
             inherit system;
 
             specialArgs = {
-              inherit username hostname;
+              inherit username hostname inputs;
             };
 
             modules = [
@@ -195,6 +202,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = { inherit inputs; };
                 home-manager.users.${username} = import ./home/profiles/desktop.nix;
               }
             ];
