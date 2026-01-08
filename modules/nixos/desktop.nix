@@ -97,6 +97,7 @@
 
   # 启用 Niri 窗口管理器（Wayland compositor）
   programs.niri.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # 某些程序需要 SUID 包装器，可进一步配置，或在用户会话中启动。
   # programs.mtr.enable = true;

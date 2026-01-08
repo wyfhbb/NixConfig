@@ -9,7 +9,6 @@
 
 {
   imports = [
-    ../../modules/common/fonts.nix
     ../../modules/common/nix-settings.nix
     ../../modules/nixos/core.nix
   ];
