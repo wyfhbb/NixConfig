@@ -26,6 +26,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # 增加WSL对于VSCode的支持
+  programs.nix-ld.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
