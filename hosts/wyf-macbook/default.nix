@@ -28,10 +28,4 @@
     home = "/Users/${username}";
     description = username;
   };
-
-  # ==========================================
-  # Nix 配置
-  # ==========================================
-  # 将用户添加到 Nix 可信用户列表，允许使用 --option 等特权命令
-  nix.settings.trusted-users = [ username ];
 }

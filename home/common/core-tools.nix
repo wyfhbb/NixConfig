@@ -97,8 +97,5 @@
         source ${../../config/p10k.zsh}
       '';
     };
-
-    home.shellAliases = {
-    };
   };
 }

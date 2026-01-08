@@ -2,6 +2,7 @@
 {
   pkgs,
   lib,
+  username,
   ...
 }: {
   environment.variables.EDITOR = "nvim";
@@ -38,6 +39,9 @@
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
+
+      # 将当前用户设置为受信任用户,允许使用自定义的 substituters
+      trusted-users = [ "root" username ];
 
       # 禁用自动优化存储,因为存在以下问题:
       #   https://github.com/NixOS/nix/issues/7273

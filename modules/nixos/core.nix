@@ -15,6 +15,4 @@
       # PasswordAuthentication = false; # 如果你想仅使用密钥
     };
   };
-  # 启用 fontconfig
-  enableDefaultPackages = true;
 }
