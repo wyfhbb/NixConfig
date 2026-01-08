@@ -7,7 +7,7 @@
 
   nixConfig = {
     substituters = [
-      # Query the mirror of USTC first, and then the official cache.
+      # 优先使用 USTC 镜像，然后再使用官方缓存。
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
     ];

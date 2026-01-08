@@ -17,19 +17,19 @@
   ];
 
   networking.hostName = hostname;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # 通过 wpa_supplicant 启用无线网络支持。
 
-  # Configure network proxy if necessary
+  # 如需网络代理请在此配置
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
+  # 启用网络
   networking.networkmanager.enable = true;
 
   # 增加WSL对于VSCode的支持
   programs.nix-ld.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # 定义用户账户。别忘了用“passwd”设置密码。
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";

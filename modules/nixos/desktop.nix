@@ -7,7 +7,7 @@
   # - 显示管理器
   # - GUI 应用
 
-  # Bootloader.
+  # 启动引导程序。
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.efi.canTouchEfiVariables = true;
   boot.loader = {
@@ -22,17 +22,17 @@
     };
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # 列出系统环境中已安装的软件包。查询可运行：
+  # 示例：$ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  vim # 别忘了添加编辑器以编辑 configuration.nix！Nano 默认已安装。
   #  wget
     vscode
     google-chrome
     ghostty
   ];
 
-  # Select internationalisation properties.
+  # 选择本地化属性。
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -47,18 +47,18 @@
     LC_TIME = "zh_CN.UTF-8";
   };
 
-  # Configure keymap in X11
+  # 在 X11 中配置键盘布局
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-  # Enable the X11 windowing system.
+  # 启用 X11 窗口系统。
   services.xserver.enable = true;
 
-  # Enable CUPS to print documents.
+  # 启用 CUPS 以打印文档。
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
+  # 启用 PipeWire 声音系统。
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -66,44 +66,41 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
+    # 如需使用 JACK 应用，取消注释此行
     #jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
+    # 使用示例会话管理器（目前没有其他可用软件包，因此默认启用，
+    # 暂时无需在配置中重复定义）
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
+  # 启用触控板支持（大多数桌面环境默认已启用）。
   # services.xserver.libinput.enable = true;
 
-  # Enable the GNOME Desktop Environment.
+  # 启用 GNOME 桌面环境。
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
+  # 某些程序需要 SUID 包装器，可进一步配置，或在用户会话中启动。
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
+  # 在此列出你想启用的服务：
 
-  # Enable the OpenSSH daemon.
+  # 启用 OpenSSH 守护进程。
   # services.openssh.enable = true;
 
-  # Open ports in the firewall.
+  # 在防火墙中开放端口。
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
+  # 或者完全禁用防火墙。
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  # 该值决定了系统中有状态数据（如文件位置和数据库版本）
+  # 的默认设置所基于的 NixOS 版本。建议保留为首次安装
+  # 该系统时的发行版本。在更改此值前，请先阅读该选项的
+  # 文档（例如 man configuration.nix 或 https://nixos.org/nixos/options.html）。
 }

@@ -60,13 +60,13 @@ float ease(float x) {
     return pow(1.0 - x, 3.0);
 }
 vec4 saturate(vec4 color, float factor) {
-    float gray = dot(color, vec4(0.299, 0.587, 0.114, 0.)); // luminance
+    float gray = dot(color, vec4(0.299, 0.587, 0.114, 0.)); // 亮度
     return mix(vec4(gray), color, factor);
 }
 
 vec4 TRAIL_COLOR = iCurrentCursorColor;
 const float OPACITY = 0.6;
-const float DURATION = 0.3; //IN SECONDS
+const float DURATION = 0.3; // 单位：秒
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {

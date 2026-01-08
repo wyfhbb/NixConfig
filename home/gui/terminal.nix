@@ -38,7 +38,7 @@
     background-opacity = 0.7
     background-blur = true
 
-    # Mac OS specific
+    # macOS 专用设置
     macos-titlebar-style = transparent
   '';
 }

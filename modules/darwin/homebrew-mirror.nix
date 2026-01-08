@@ -1,6 +1,6 @@
 { lib, ... }:
 let
-  # Homebrew Mirror
+  # Homebrew 镜像
   homebrew_mirror_env = {
     HOMEBREW_API_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api";
     HOMEBREW_BOTTLE_DOMAIN = "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles";
@@ -10,10 +10,10 @@ let
   };
 in
 {
-  # Set variables for you to manually install homebrew packages.
+  # 为你手动安装 Homebrew 包设置环境变量。
   environment.variables = homebrew_mirror_env;
 
-  # Set environment variables for nix-darwin before run `brew bundle`.
+  # 在运行 `brew bundle` 之前为 nix-darwin 设置环境变量。
   system.activationScripts.homebrew.text =
     let
       env_script = lib.attrsets.foldlAttrs (
