@@ -1,33 +1,32 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
+// 此配置使用 KDL 格式: https://kdl.dev
+// "/-" 注释掉随后的节点。
+// 查看 wiki 获取完整的配置说明:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
-// Input device configuration.
-// Find the full list of options on the wiki:
+// 输入设备配置。
+// 在 wiki 上查找完整的选项列表:
 // https://yalter.github.io/niri/Configuration:-Input
 input {
     keyboard {
         xkb {
-            // You can set rules, model, layout, variant and options.
-            // For more information, see xkeyboard-config(7).
+            // 你可以设置 rules, model, layout, variant 和 options。
+            // 更多信息请参阅 xkeyboard-config(7)。
 
-            // For example:
+            // 例如:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
 
-            // If this section is empty, niri will fetch xkb settings
-            // from org.freedesktop.locale1. You can control these using
-            // localectl set-x11-keymap.
+            // 如果此部分为空，niri 将从 org.freedesktop.locale1 获取 xkb 设置。
+            // 你可以使用 localectl set-x11-keymap 来控制这些设置。
         }
 
-        // Enable numlock on startup, omitting this setting disables it.
+        // 启动时启用 numlock，省略此设置则禁用它。
         numlock
     }
 
-    // Next sections include libinput settings.
-    // Omitting settings disables them, or leaves them at their default values.
-    // All commented-out settings here are examples, not defaults.
+    // 接下来的部分包含 libinput 设置。
+    // 省略设置将禁用它们，或将其保留为默认值。
+    // 这里所有被注释掉的设置都是示例，而非默认值。
     touchpad {
         // off
         tap
@@ -61,199 +60,189 @@ input {
         // middle-emulation
     }
 
-    // Uncomment this to make the mouse warp to the center of newly focused windows.
+    // 取消注释以使鼠标移动到新聚焦窗口的中心。
     // warp-mouse-to-focus
 
-    // Focus windows and outputs automatically when moving the mouse into them.
-    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
+    // 当鼠标移动到窗口和输出中时自动聚焦。
+    // 设置 max-scroll-amount="0%" 使其仅在完全位于屏幕上的窗口上工作。
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
+// 你可以按名称配置输出，你可以通过在 niri 实例中运行
+// `niri msg outputs` 来找到名称。
+// 内置笔记本显示器通常称为 "eDP-1"。
+// 在 wiki 上查找更多信息:
 // https://yalter.github.io/niri/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
+// 记得通过删除 "/-" 来取消注释节点!
 /-output "eDP-1" {
-    // Uncomment this line to disable this output.
+    // 取消注释此行以禁用此输出。
     // off
 
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
+    // 输出的分辨率和（可选）刷新率。
+    // 格式为 "<width>x<height>" 或 "<width>x<height>@<refresh rate>"。
+    // 如果省略刷新率，niri 将为该分辨率选择最高的刷新率。
+    // 如果完全省略模式或模式无效，niri 将自动选择一个。
+    // 在 niri 实例中运行 `niri msg outputs` 以列出所有输出及其模式。
     mode "1920x1080@120.030"
 
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+    // 你可以使用整数或分数缩放，例如使用 1.5 表示 150% 缩放。
     scale 2
 
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+    // Transform 允许逆时针旋转输出，有效值为:
+    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 和 flipped-270。
     transform "normal"
 
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
+    // 输出在全局坐标空间中的位置。
+    // 这会影响像 "focus-monitor-left" 这样的定向显示器操作以及光标移动。
+    // 光标只能在直接相邻的输出之间移动。
+    // 定位时必须考虑输出缩放和旋转:
+    // 输出以逻辑（或缩放）像素为单位。
+    // 例如，一个 3840×2160 的输出，缩放比例为 2.0，逻辑大小为 1920×1080，
+    // 所以要将另一个输出直接放在其右侧，请将其 x 设置为 1920。
+    // 如果未设置位置或导致重叠，输出将自动放置。
     position x=1280 y=0
 }
 
-// Settings that influence how windows are positioned and sized.
-// Find more information on the wiki:
+// 影响窗口定位和大小调整的设置。
+// 在 wiki 上查找更多信息:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
-    // Set gaps around windows in logical pixels.
+    // 设置窗口周围的间隙（以逻辑像素为单位）。
     gaps 16
 
-    // When to center a column when changing focus, options are:
-    // - "never", default behavior, focusing an off-screen column will keep at the left
-    //   or right edge of the screen.
-    // - "always", the focused column will always be centered.
-    // - "on-overflow", focusing a column will center it if it doesn't fit
-    //   together with the previously focused column.
+    // 改变焦点时何时居中列，选项有:
+    // - "never", 默认行为，聚焦屏幕外的列将保持在屏幕的左侧或右侧边缘。
+    // - "always", 聚焦的列将始终居中。
+    // - "on-overflow", 如果聚焦的列与之前聚焦的列无法同时显示，则居中它。
     center-focused-column "never"
 
-    // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
+    // 你可以自定义 "switch-preset-column-width" (Mod+R) 切换的宽度。
     preset-column-widths {
-        // Proportion sets the width as a fraction of the output width, taking gaps into account.
-        // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
-        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
+        // Proportion 将宽度设置为输出宽度的分数，考虑间隙。
+        // 例如，你可以在一个输出上完美地放置四个大小为 "proportion 0.25" 的窗口。
+        // 默认预设宽度为输出的 1/3, 1/2 和 2/3。
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
 
-        // Fixed sets the width in logical pixels exactly.
+        // Fixed 设置精确的逻辑像素宽度。
         // fixed 1920
     }
 
-    // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
+    // 你还可以自定义 "switch-preset-window-height" (Mod+Shift+R) 切换的高度。
     // preset-window-heights { }
 
-    // You can change the default width of the new windows.
+    // 你可以更改新窗口的默认宽度。
     default-column-width { proportion 0.5; }
-    // If you leave the brackets empty, the windows themselves will decide their initial width.
+    // 如果留空括号，窗口将自行决定其初始宽度。
     // default-column-width {}
 
-    // By default focus ring and border are rendered as a solid background rectangle
-    // behind windows. That is, they will show up through semitransparent windows.
-    // This is because windows using client-side decorations can have an arbitrary shape.
+    // 默认情况下，焦点环和边框呈现为窗口后面的纯色背景矩形。
+    // 也就是说，它们会透过半透明窗口显示出来。
+    // 这是因为使用客户端装饰 (CSD) 的窗口可以具有任意形状。
     //
-    // If you don't like that, you should uncomment `prefer-no-csd` below.
-    // Niri will draw focus ring and border *around* windows that agree to omit their
-    // client-side decorations.
+    // 如果你不喜欢这样，你应该取消注释下面的 `prefer-no-csd`。
+    // Niri 将在同意省略其客户端装饰的窗口*周围*绘制焦点环和边框。
     //
-    // Alternatively, you can override it with a window rule called
-    // `draw-border-with-background`.
+    // 或者，你可以使用名为 `draw-border-with-background` 的窗口规则覆盖它。
 
-    // You can change how the focus ring looks.
+    // 你可以更改焦点环的外观。
     focus-ring {
-        // Uncomment this line to disable the focus ring.
+        // 取消注释此行以禁用焦点环。
         // off
 
-        // How many logical pixels the ring extends out from the windows.
+        // 环从窗口向外延伸多少逻辑像素。
         width 4
 
-        // Colors can be set in a variety of ways:
-        // - CSS named colors: "red"
-        // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
-        // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
+        // 颜色可以通过多种方式设置:
+        // - CSS 命名颜色: "red"
+        // - RGB 十六进制: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
+        // - 类似 CSS 的符号: "rgb(255, 127, 0)", rgba(), hsl() 等。
 
-        // Color of the ring on the active monitor.
+        // 活动显示器上的环颜色。
         active-color "#7fc8ff"
 
-        // Color of the ring on inactive monitors.
+        // 非活动显示器上的环颜色。
         //
-        // The focus ring only draws around the active window, so the only place
-        // where you can see its inactive-color is on other monitors.
+        // 焦点环仅绘制在活动窗口周围，因此你只能在其他显示器上
+        // 看到它的 inactive-color。
         inactive-color "#505050"
 
-        // You can also use gradients. They take precedence over solid colors.
-        // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
-        // The angle is the same as in linear-gradient, and is optional,
-        // defaulting to 180 (top-to-bottom gradient).
-        // You can use any CSS linear-gradient tool on the web to set these up.
-        // Changing the color space is also supported, check the wiki for more info.
+        // 你也可以使用渐变。它们优先于纯色。
+        // 渐变渲染与 CSS linear-gradient(angle, from, to) 相同。
+        // 角度与 linear-gradient 中相同，是可选的，默认为 180（从上到下的渐变）。
+        // 你可以使用网络上的任何 CSS linear-gradient 工具来设置这些。
+        // 也支持更改色彩空间，查看 wiki 以获取更多信息。
         //
         // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
 
-        // You can also color the gradient relative to the entire view
-        // of the workspace, rather than relative to just the window itself.
-        // To do that, set relative-to="workspace-view".
+        // 你还可以相对于工作区的整个视图为渐变着色，
+        // 而不仅仅是相对于窗口本身。
+        // 要做到这一点，请设置 relative-to="workspace-view"。
         //
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
-    // You can also add a border. It's similar to the focus ring, but always visible.
+    // 你也可以添加边框。它类似于焦点环，但始终可见。
     border {
-        // The settings are the same as for the focus ring.
-        // If you enable the border, you probably want to disable the focus ring.
+        // 设置与焦点环相同。
+        // 如果你启用了边框，你可能想要禁用焦点环。
         off
 
         width 4
         active-color "#ffc87f"
         inactive-color "#505050"
 
-        // Color of the border around windows that request your attention.
+        // 请求你注意的窗口周围的边框颜色。
         urgent-color "#9b0000"
 
-        // Gradients can use a few different interpolation color spaces.
-        // For example, this is a pastel rainbow gradient via in="oklch longer hue".
+        // 渐变可以使用几种不同的插值色彩空间。
+        // 例如，这是通过 in="oklch longer hue" 实现的柔和彩虹渐变。
         //
         // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
 
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
-    // You can enable drop shadows for windows.
+    // 你可以为窗口启用投影。
     shadow {
-        // Uncomment the next line to enable shadows.
+        // 取消注释下一行以启用阴影。
         // on
 
-        // By default, the shadow draws only around its window, and not behind it.
-        // Uncomment this setting to make the shadow draw behind its window.
+        // 默认情况下，阴影仅绘制在其窗口周围，而不绘制在其后面。
+        // 取消注释此设置以使阴影绘制在其窗口后面。
         //
-        // Note that niri has no way of knowing about the CSD window corner
-        // radius. It has to assume that windows have square corners, leading to
-        // shadow artifacts inside the CSD rounded corners. This setting fixes
-        // those artifacts.
+        // 请注意，niri 无法知道 CSD 窗口圆角半径。
+        // 它必须假设窗口有直角，导致 CSD 圆角内出现阴影伪影。
+        // 此设置修复了那些伪影。
         //
-        // However, instead you may want to set prefer-no-csd and/or
-        // geometry-corner-radius. Then, niri will know the corner radius and
-        // draw the shadow correctly, without having to draw it behind the
-        // window. These will also remove client-side shadows if the window
-        // draws any.
+        // 但是，你可能想要设置 prefer-no-csd 和/或 geometry-corner-radius。
+        // 这样，niri 将知道圆角半径并正确绘制阴影，而无需将其绘制在窗口后面。
+        // 如果窗口绘制任何客户端阴影，这也将移除它们。
         //
         // draw-behind-window true
 
-        // You can change how shadows look. The values below are in logical
-        // pixels and match the CSS box-shadow properties.
+        // 你可以更改阴影的外观。下面的值以逻辑像素为单位，
+        // 并与 CSS box-shadow 属性匹配。
 
-        // Softness controls the shadow blur radius.
+        // Softness 控制阴影模糊半径。
         softness 30
 
-        // Spread expands the shadow.
+        // Spread 扩展阴影。
         spread 5
 
-        // Offset moves the shadow relative to the window.
+        // Offset 相对于窗口移动阴影。
         offset x=0 y=5
 
-        // You can also change the shadow color and opacity.
+        // 你也可以更改阴影颜色和不透明度。
         color "#0007"
     }
 
-    // Struts shrink the area occupied by windows, similarly to layer-shell panels.
-    // You can think of them as a kind of outer gaps. They are set in logical pixels.
-    // Left and right struts will cause the next window to the side to always be visible.
-    // Top and bottom struts will simply add outer gaps in addition to the area occupied by
-    // layer-shell panels and regular gaps.
+    // Struts 缩小窗口占据的区域，类似于 layer-shell 面板。
+    // 你可以将它们视为一种外部间隙。它们以逻辑像素为单位设置。
+    // 左侧和右侧 strut 将导致下侧的下一个窗口始终可见。
+    // 顶部和底部 strut 只是除了 layer-shell 面板和常规间隙占据的区域之外，
+    // 添加外部间隙。
     struts {
         // left 64
         // right 64
@@ -262,141 +251,141 @@ layout {
     }
 }
 
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
+// 添加如下行以在启动时生成进程。
+// 请注意，作为会话运行 niri 支持 xdg-desktop-autostart，
+// 使用它可能更方便。
+// 参阅下面的绑定部分以获取更多 spawn 示例。
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
+// 此行启动 waybar，这也是 Wayland 合成器常用的栏。
 spawn-at-startup "waybar"
 
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
+// 要运行 shell 命令（带变量、管道等），请使用 spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 hotkey-overlay {
-    // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
+    // 取消注释此行以禁用启动时的 "Important Hotkeys" 弹出窗口。
     // skip-at-startup
 }
 
-// Uncomment this line to ask the clients to omit their client-side decorations if possible.
-// If the client will specifically ask for CSD, the request will be honored.
-// Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
-// This option will also fix border/focus ring drawing behind some semitransparent windows.
-// After enabling or disabling this, you need to restart the apps for this to take effect.
+// 取消注释此行以要求客户端如果可能的话省略其客户端装饰 (CSD)。
+// 如果客户端明确要求 CSD，该请求将被尊重。
+// 此外，客户端将被通知它们被平铺，从而移除一些客户端圆角。
+// 此选项还将修复某些半透明窗口后面的边框/焦点环绘制。
+// 启用或禁用此选项后，你需要重新启动应用程序才能生效。
 // prefer-no-csd
 
-// You can change the path where screenshots are saved.
-// A ~ at the front will be expanded to the home directory.
-// The path is formatted with strftime(3) to give you the screenshot date and time.
+// 你可以更改保存屏幕截图的路径。
+// 前面的 ~ 将扩展为主目录。
+// 路径使用 strftime(3) 格式化，以此给出屏幕截图的日期和时间。
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-// You can also set this to null to disable saving screenshots to disk.
+// 你也可以将其设置为 null 以禁用将屏幕截图保存到磁盘。
 // screenshot-path null
 
-// Animation settings.
-// The wiki explains how to configure individual animations:
+// 动画设置。
+// wiki 解释了如何配置单个动画:
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
-    // Uncomment to turn off all animations.
+    // 取消注释以关闭所有动画。
     // off
 
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // 将所有动画减慢此倍数。低于 1 的值会加速它们。
     // slowdown 3.0
 }
 
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
+// 窗口规则允许你调整单个窗口的行为。
+// 在 wiki 上查找更多信息:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
 
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
+// 解决 WezTerm 的初始配置错误
+// 通过设置空的 default-column-width。
 window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
+    // 这个正则表达式故意写得尽可能具体，
+    // 因为这是默认配置，我们要避免误报。
+    // 如果你想的话，可以只用 app-id="wezterm"。
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
+// 默认情况下将 Firefox 画中画播放器作为浮动窗口打开。
 window-rule {
-    // This app-id regular expression will work for both:
-    // - host Firefox (app-id is "firefox")
-    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    // 此 app-id 正则表达式适用于两者:
+    // - 宿主 Firefox (app-id 为 "firefox")
+    // - Flatpak Firefox (app-id 为 "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
-// Example: block out two password managers from screen capture.
-// (This example rule is commented out with a "/-" in front.)
+// 示例：阻止屏幕捕获两个密码管理器。
+// (此示例规则以前面的 "/-" 注释掉。)
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
     block-out-from "screen-capture"
 
-    // Use this instead if you want them visible on third-party screenshot tools.
+    // 如果你希望它们在第三方屏幕截图工具上可见，请改用此选项。
     // block-out-from "screencast"
 }
 
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
+// 示例：为所有窗口启用圆角。
+// (此示例规则以前面的 "/-" 注释掉。)
 /-window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
 
 binds {
-    // Keys consist of modifiers separated by + signs, followed by an XKB key name
-    // in the end. To find an XKB name for a particular key, you may use a program
-    // like wev.
+    // 键由 + 号分隔的修饰符组成，最后是 XKB 键名。
+    // 要查找特定键的 XKB 名称，你可以使用像 wev 这样的程序。
     //
-    // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
-    // when running as a winit window.
+    // "Mod" 是一个特殊的修饰符，在 TTY 上运行时等于 Super，
+    // 在作为 winit 窗口运行时等于 Alt。
     //
-    // Most actions that you can bind here can also be invoked programmatically with
-    // `niri msg action do-something`.
+    // 这里可以绑定的大多数操作也可以通过
+    // `niri msg action do-something` 以编程方式调用。
 
-    // Mod-Shift-/, which is usually the same as Mod-?,
-    // shows a list of important hotkeys.
+    // Mod-Shift-/，通常与 Mod-? 相同，
+    // 显示重要热捷键的列表。
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    // Suggested binds for running programs: terminal, app launcher, screen locker.
+    // 运行程序的建议绑定：终端、应用程序启动器、锁屏。
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
-    // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
-    // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
-    // For example, this is a standard bind to toggle the screen reader (orca).
+    // 使用 spawn-sh 运行 shell 命令。如果你需要管道、多个命令等，请使用此选项。
+    // 注意：整个命令作为单个参数传递。它被逐字传递给 `sh -c`。
+    // 例如，这是切换屏幕阅读器 (orca) 的标准绑定。
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
-    // Example volume keys mappings for PipeWire & WirePlumber.
-    // The allow-when-locked=true property makes them work even when the session is locked.
-    // Using spawn-sh allows to pass multiple arguments together with the command.
-    // "-l 1.0" limits the volume to 100%.
+    // PipeWire 和 WirePlumber 的音量键映射示例。
+    // allow-when-locked=true 属性使它们即使在这会话锁定时也能工作。
+    // 使用 spawn-sh 允许传递多个参数以及命令。
+    // "-l 1.0" 将音量限制为 100%。
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    // Example media keys mapping using playerctl.
-    // This will work with any MPRIS-enabled media player.
+    // 使用 playerctl 的媒体键映射示例。
+    // 这将适用于任何支持 MPRIS 的媒体播放器。
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    // Example brightness key mappings for brightnessctl.
-    // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
-    // but you need to manually put each argument in separate "" quotes.
+    // brightnessctl 的亮度键映射示例。
+    // 你也可以使用带有多个参数的常规 spawn（以避免通过 "sh"），
+    // 但你需要手动将每个参数放在单独的 "" 引号中。
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
-    // Open/close the Overview: a zoomed-out view of workspaces and windows.
-    // You can also move the mouse into the top-left hot corner,
-    // or do a four-finger swipe up on a touchpad.
+    // 打开/关闭概览：工作区和窗口的缩小视图。
+    // 你也可以将鼠标移动到左上角热区，
+    // 或在触摸板上向上四指滑动。
     Mod+O repeat=false { toggle-overview; }
+
 
     Mod+Q repeat=false { close-window; }
 
@@ -418,8 +407,7 @@ binds {
     Mod+Ctrl+K     { move-window-up; }
     Mod+Ctrl+L     { move-column-right; }
 
-    // Alternative commands that move across workspaces when reaching
-    // the first or last window in a column.
+    // 替代的命令，当到达列中的第一个或最后一个窗口时，移动到其他工作区。
     // Mod+J     { focus-window-or-workspace-down; }
     // Mod+K     { focus-window-or-workspace-up; }
     // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
@@ -448,11 +436,11 @@ binds {
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
-    // Alternatively, there are commands to move just a single window:
+    // 或者，也有仅移动单个窗口的命令:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
     // ...
 
-    // And you can also move a whole workspace to another monitor:
+    // 你也可以将整个工作区移动到另一个显示器:
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
 
@@ -465,7 +453,7 @@ binds {
     Mod+Ctrl+U         { move-column-to-workspace-down; }
     Mod+Ctrl+I         { move-column-to-workspace-up; }
 
-    // Alternatively, there are commands to move just a single window:
+    // 或者，也有仅移动单个窗口的命令:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
     // ...
 
@@ -474,12 +462,12 @@ binds {
     Mod+Shift+U         { move-workspace-down; }
     Mod+Shift+I         { move-workspace-up; }
 
-    // You can bind mouse wheel scroll ticks using the following syntax.
-    // These binds will change direction based on the natural-scroll setting.
+    // 你可以使用以下语法绑定鼠标滚轮滚动刻度。
+    // 这些绑定将根据 natural-scroll 设置更改方向。
     //
-    // To avoid scrolling through workspaces really fast, you can use
-    // the cooldown-ms property. The bind will be rate-limited to this value.
-    // You can set a cooldown on any bind, but it's most useful for the wheel.
+    // 为了避免过快地滚动工作区，你可以使用 cooldown-ms 属性。
+    // 绑定将被限制为此值的速率。
+    // 你可以在任何绑定上设置冷却时间，但它对滚轮最有用。
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
@@ -490,30 +478,26 @@ binds {
     Mod+Ctrl+WheelScrollRight { move-column-right; }
     Mod+Ctrl+WheelScrollLeft  { move-column-left; }
 
-    // Usually scrolling up and down with Shift in applications results in
-    // horizontal scrolling; these binds replicate that.
+    // 通常在应用程序中按住 Shift 向上或向下滚动会导致水平滚动；
+    // 这些绑定复制了这种行为。
     Mod+Shift+WheelScrollDown      { focus-column-right; }
     Mod+Shift+WheelScrollUp        { focus-column-left; }
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
-    // Similarly, you can bind touchpad scroll "ticks".
-    // Touchpad scrolling is continuous, so for these binds it is split into
-    // discrete intervals.
-    // These binds are also affected by touchpad's natural-scroll, so these
-    // example binds are "inverted", since we have natural-scroll enabled for
-    // touchpads by default.
+    // 同样，你可以绑定触摸板滚动 "刻度"。
+    // 触摸板滚动是连续的，因此对于这些绑定，它被分成离散的间隔。
+    // 这些绑定也受触摸板的 natural-scroll 影响，因此这些
+    // 示例绑定是 "反转的"，因为我们默认启用了触摸板的 natural-scroll。
     // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
     // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
 
-    // You can refer to workspaces by index. However, keep in mind that
-    // niri is a dynamic workspace system, so these commands are kind of
-    // "best effort". Trying to refer to a workspace index bigger than
-    // the current workspace count will instead refer to the bottommost
-    // (empty) workspace.
+    // 你可以通过索引引用工作区。但是，请记住
+    // niri 是一个动态工作区系统，所以这些命令有点像 "尽力而为"。
+    // 尝试引用大于当前工作区计数的索引将引用最底部的（空）工作区。
     //
-    // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
-    // will all refer to the 3rd workspace.
+    // 例如，有 2 个工作区 + 1 个空工作区，索引 3, 4, 5 等
+    // 都将引用第 3 个工作区。
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -533,69 +517,68 @@ binds {
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
-    // Alternatively, there are commands to move just a single window:
+    // 或者，也有仅移动单个窗口的命令:
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
-    // Switches focus between the current and the previous workspace.
+    // 在当前和前一个工作区之间切换焦点。
     // Mod+Tab { focus-workspace-previous; }
 
-    // The following binds move the focused window in and out of a column.
-    // If the window is alone, they will consume it into the nearby column to the side.
-    // If the window is already in a column, they will expel it out.
+    // 以下绑定将聚焦窗口移入和移出列。
+    // 如果窗口是单独的，它们将把它消耗到旁边最近的列中。
+    // 如果窗口已经在列中，它们将把它排出。
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    // Consume one window from the right to the bottom of the focused column.
+    // 从右侧消耗一个窗口到聚焦列的底部。
     Mod+Comma  { consume-window-into-column; }
-    // Expel the bottom window from the focused column to the right.
+    // 将底部窗口从聚焦列排出到右侧。
     Mod+Period { expel-window-from-column; }
 
     Mod+R { switch-preset-column-width; }
-    // Cycling through the presets in reverse order is also possible.
+    // 也可以反向循环预设。
     // Mod+R { switch-preset-column-width-back; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 
-    // Expand the focused column to space not taken up by other fully visible columns.
-    // Makes the column "fill the rest of the space".
+    // 将聚焦列扩展到未被其他完全可见列占用的空间。
+    // 使列 "填满剩余空间"。
     Mod+Ctrl+F { expand-column-to-available-width; }
 
     Mod+C { center-column; }
 
-    // Center all fully visible columns on screen.
+    // 将屏幕上所有完全可见的列居中。
     Mod+Ctrl+C { center-visible-columns; }
 
-    // Finer width adjustments.
-    // This command can also:
-    // * set width in pixels: "1000"
-    // * adjust width in pixels: "-5" or "+5"
-    // * set width as a percentage of screen width: "25%"
-    // * adjust width as a percentage of screen width: "-10%" or "+10%"
-    // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
-    // set-column-width "100" will make the column occupy 200 physical screen pixels.
+    // 更精细的宽度调整。
+    // 此命令还可以:
+    // * 设置像素宽度: "1000"
+    // * 调整像素宽度: "-5" 或 "+5"
+    // * 设置屏幕宽度的百分比宽度: "25%"
+    // * 调整屏幕宽度的百分比宽度: "-10%" 或 "+10%"
+    // 像素大小使用逻辑（或缩放）像素。即在缩放比例为 2.0 的输出上，
+    // set-column-width "100" 将使列占据 200 个物理屏幕像素。
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
 
-    // Finer height adjustments when in column with other windows.
+    // 与其他窗口在同一列时进行更精细的高度调整。
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    // Move the focused window between the floating and the tiling layout.
+    // 在浮动和瓦片布局之间移动聚焦窗口。
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-    // Toggle tabbed column display mode.
-    // Windows in this column will appear as vertical tabs,
-    // rather than stacked on top of each other.
+    // 切换标签列显示模式。
+    // 该列中的窗口将显示为垂直标签，而不是因为堆叠在一起。
     Mod+W { toggle-column-tabbed-display; }
 
-    // Actions to switch layouts.
-    // Note: if you uncomment these, make sure you do NOT have
-    // a matching layout switch hotkey configured in xkb options above.
-    // Having both at once on the same hotkey will break the switching,
-    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
+    // 切换布局的操作。
+    // 注意：如果你取消注释这些，请确保你在上面的 xkb 选项中没有
+    // 配置匹配的布局切换热键。
+    // 同时在同一个热键上拥有两者会破坏切换，
+    // 因为每次按下热键它将切换两次（一次由 xkb，一次由 niri）。
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
@@ -603,21 +586,20 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    // Applications such as remote-desktop clients and software KVM switches may
-    // request that niri stops processing the keyboard shortcuts defined here
-    // so they may, for example, forward the key presses as-is to a remote machine.
-    // It's a good idea to bind an escape hatch to toggle the inhibitor,
-    // so a buggy application can't hold your session hostage.
+    // 远程桌面客户端和软件 KVM 开关等应用程序可能会请求 niri 停止处理
+    // 此处定义的键盘快捷键，以便它们可以（例如）将按键原样转发到远程机器。
+    // 绑定一个逃生舱口来切换抑制器是个好主意，
+    // 这样有 bug 的应用程序就无法劫持你的会话。
     //
-    // The allow-inhibiting=false property can be applied to other binds as well,
-    // which ensures niri always processes them, even when an inhibitor is active.
+    // allow-inhibiting=false 属性也可以应用于其他绑定，
+    // 这确保 niri 始终处理它们，即使抑制器处于活动状态。
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-    // The quit action will show a confirmation dialog to avoid accidental exits.
+    // 退出操作将显示确认对话框，以避免意外退出。
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 
-    // Powers off the monitors. To turn them back on, do any input like
-    // moving the mouse or pressing any other key.
+    // 关闭显示器电源。要重新打开它们，请执行任何输入，
+    // 如移动鼠标或按任何其他键。
     Mod+Shift+P { power-off-monitors; }
 }
