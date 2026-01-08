@@ -25,11 +25,11 @@
   # 列出系统环境中已安装的软件包。查询可运行：
   # 示例：$ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # 别忘了添加编辑器以编辑 configuration.nix！Nano 默认已安装。
-  #  wget
     vscode
     google-chrome
     ghostty
+    # GNOM
+    gnomeExtensions.appindicator  # 托盘图标支持
   ];
 
   # 选择本地化属性。
@@ -46,6 +46,18 @@
     LC_TELEPHONE = "zh_CN.UTF-8";
     LC_TIME = "zh_CN.UTF-8";
   };
+
+  # 输入法fcitx5配置
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-rime
+      qt6Packages.fcitx5-chinese-addons
+      fcitx5-gtk
+    ];
+  };
+
 
   # 在 X11 中配置键盘布局
   services.xserver.xkb = {

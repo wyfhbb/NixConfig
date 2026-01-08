@@ -6,6 +6,7 @@
     ../common/cli-apps.nix
     ../common/core-tools.nix
     ../gui/terminal.nix
+    ../gui/input-method.nix
   ];
 
   home = {
