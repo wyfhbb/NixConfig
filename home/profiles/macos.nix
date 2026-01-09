@@ -1,5 +1,5 @@
 # macOS 用户配置
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 
 {
   # 导入通用模块
@@ -11,8 +11,8 @@
 
   # Home Manager 需要知道用户和主目录
   home = {
-    username = "wyf";
-    homeDirectory = "/Users/wyf";
+    username = "${username}";
+    homeDirectory = "/Users/${username}";
 
     # Home Manager 版本管理
     # 这个值决定了 Home Manager 的默认行为

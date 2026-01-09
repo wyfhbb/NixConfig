@@ -1,5 +1,5 @@
 # 精简用户配置（服务器和 WSL）
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, username, ... }:
 
 {
   imports = [
@@ -11,8 +11,8 @@
   ];
 
   home = {
-    username = "wyf";
-    homeDirectory = "/home/wyf";
+    username = "${username}";
+    homeDirectory = "/home/${username}";
     stateVersion = "25.11";
   };
 
@@ -31,7 +31,7 @@
 
   # 导入 niri 配置文件
   xdg.configFile."niri/config.kdl" = {
-    source = ../../config/niri/config.kdl;
+    source = ./niri/config.kdl;
     force = true;
   };
 

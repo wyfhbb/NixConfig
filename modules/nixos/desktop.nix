@@ -38,7 +38,8 @@
     # 网络工具
     networkmanagerapplet
     clash-verge-rev
- 
+    termius
+    obs-studio
   ];
 
   # 选择本地化属性。

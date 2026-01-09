@@ -1,5 +1,5 @@
 # 完整用户配置（wsl）
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 
 {
   imports = [
@@ -8,8 +8,8 @@
   ];
 
   home = {
-    username = "wyf";
-    homeDirectory = "/home/wyf";
+    username = "${username}";
+    homeDirectory = "/home/${username}";
     stateVersion = "25.11";
   };
 
