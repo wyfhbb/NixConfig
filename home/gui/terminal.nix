@@ -37,7 +37,6 @@ let
 
     window-padding-x = 5
     window-padding-y = 5
-    background-opacity = 0.7
   '';
 
   # 根据系统类型定义差异化配置
@@ -45,6 +44,7 @@ let
     # --- macOS 专属 ---
     macos-titlebar-style = transparent
     background-blur = true
+    background-opacity = 0.7
   '' else ''
     # --- Linux (Niri/Wayland) 专属 ---
     # 禁用窗口装饰，交给 Niri 处理

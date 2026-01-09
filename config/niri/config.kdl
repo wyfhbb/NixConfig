@@ -61,11 +61,12 @@ input {
     }
 
     // 取消注释以使鼠标移动到新聚焦窗口的中心。
-    warp-mouse-to-focus
+    // warp-mouse-to-focus
 
     // 当鼠标移动到窗口和输出中时自动聚焦。
     // 设置 max-scroll-amount="0%" 使其仅在完全位于屏幕上的窗口上工作。
     // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse
 }
 
 // 你可以按名称配置输出，你可以通过在 niri 实例中运行
@@ -149,10 +150,10 @@ layout {
     // 你可以更改焦点环的外观。
     focus-ring {
         // 取消注释此行以禁用焦点环。
-        off
+        // off
 
         // 环从窗口向外延伸多少逻辑像素。
-        width 4
+        width 3
 
         // 颜色可以通过多种方式设置:
         // - CSS 命名颜色: "red"
@@ -160,13 +161,13 @@ layout {
         // - 类似 CSS 的符号: "rgb(255, 127, 0)", rgba(), hsl() 等。
 
         // 活动显示器上的环颜色。
-        active-color "#7fc8ff"
+        // active-color "#7fc8ff"
 
         // 非活动显示器上的环颜色。
         //
         // 焦点环仅绘制在活动窗口周围，因此你只能在其他显示器上
         // 看到它的 inactive-color。
-        inactive-color "#505050"
+        // inactive-color "#505050"
 
         // 你也可以使用渐变。它们优先于纯色。
         // 渐变渲染与 CSS linear-gradient(angle, from, to) 相同。
@@ -174,20 +175,20 @@ layout {
         // 你可以使用网络上的任何 CSS linear-gradient 工具来设置这些。
         // 也支持更改色彩空间，查看 wiki 以获取更多信息。
         //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        active-gradient from="#2d4a6e" to="#3d2d5a" angle=135
 
         // 你还可以相对于工作区的整个视图为渐变着色，
         // 而不仅仅是相对于窗口本身。
         // 要做到这一点，请设置 relative-to="workspace-view"。
         //
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#2a2a2a" to="#1a1a1a" angle=135
     }
 
     // 你也可以添加边框。它类似于焦点环，但始终可见。
     border {
         // 设置与焦点环相同。
         // 如果你启用了边框，你可能想要禁用焦点环。
-        // off
+        off
 
         width 4
         active-color "#ffc87f"
@@ -272,7 +273,7 @@ hotkey-overlay {
 // 此外，客户端将被通知它们被平铺，从而移除一些客户端圆角。
 // 此选项还将修复某些半透明窗口后面的边框/焦点环绘制。
 // 启用或禁用此选项后，你需要重新启动应用程序才能生效。
-// prefer-no-csd
+prefer-no-csd
 
 // 你可以更改保存屏幕截图的路径。
 // 前面的 ~ 将扩展为主目录。
@@ -314,6 +315,29 @@ window-rule {
     // - Flatpak Firefox (app-id 为 "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+// 窗口配置
+window-rule {
+  // Rounded corners for a modern look.
+  geometry-corner-radius 20
+
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
+
+  // 窗口透明度设置
+  // 焦点窗口的不透明度 (1.0 = 完全不透明，清晰显示)
+  opacity 0.9
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+// noctalia overview配置 全局模糊
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
 }
 
 // 示例：阻止屏幕捕获两个密码管理器。
