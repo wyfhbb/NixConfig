@@ -25,13 +25,20 @@
   # 列出系统环境中已安装的软件包。查询可运行：
   # 示例：$ nix search wget
   environment.systemPackages = with pkgs; [
+    # 启用xwayland支持
+    xwayland-satellite
     vscode
     google-chrome
     ghostty
     # GNOM
     gnomeExtensions.appindicator  # 托盘图标支持
+    file-roller  # 解压缩
     # Noctalia Shell
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # 网络工具
+    networkmanagerapplet
+    clash-verge-rev
+ 
   ];
 
   # 选择本地化属性。
@@ -121,8 +128,30 @@
   # 在防火墙中开放端口。
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # 或者完全禁用防火墙。
-  # networking.firewall.enable = false;
+
+  # Mihomo TUN 模式所需的防火墙配置
+  # 参考: https://wiki.nixos.org/wiki/Mihomo
+  networking.firewall = {
+    enable = true;
+    # 将 TUN 设备添加到受信任接口，避免被防火墙拦截
+    trustedInterfaces = [ "Meta" ];
+    # 禁用反向路径过滤，允许 TUN 设备的流量正常路由
+    checkReversePath = false;
+  };
+
+  # 配置 sudo 免密执行 mihomo
+  # 允许用户测试不同版本的 mihomo，不托管给系统
+  security.sudo.extraRules = [
+    {
+      users = [ "wyf" ];
+      commands = [
+        {
+          command = "/home/wyf/Startup/mihomo/mihomo";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 
   # 该值决定了系统中有状态数据（如文件位置和数据库版本）
   # 的默认设置所基于的 NixOS 版本。建议保留为首次安装

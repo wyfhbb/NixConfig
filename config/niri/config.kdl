@@ -263,6 +263,9 @@ layout {
 // 要运行 shell 命令（带变量、管道等），请使用 spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
+// 启动代理服务 (mihomo + xray)
+spawn-sh-at-startup "bash ~/Startup/start-proxies.sh"
+
 hotkey-overlay {
     // 取消注释此行以禁用启动时的 "Important Hotkeys" 弹出窗口。
     // skip-at-startup
