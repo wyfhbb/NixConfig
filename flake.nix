@@ -113,15 +113,6 @@
             ];
           };
       };
-
-      # ==========================================
-      # formatter: 代码格式化工具
-      # ==========================================
-      formatter = {
-        x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
-        aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
-      };
-
       # ==========================================
       # nixosConfigurations: Linux 系统配置
       # ==========================================
@@ -150,6 +141,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = { inherit username hostname; };
                 home-manager.users.${username} = import ./home/profiles/wsl.nix;
               }
             ];
@@ -176,6 +168,7 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = { inherit username hostname; };
                 home-manager.users.${username} = import ./home/profiles/server.nix;
               }
             ];
@@ -202,11 +195,18 @@
               {
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.extraSpecialArgs = { inherit username hostname inputs; };
                 home-manager.users.${username} = import ./home/profiles/desktop.nix;
               }
             ];
           };
+        # ==========================================
+        # formatter: 代码格式化工具
+        # ==========================================
+        formatter = {
+          x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
+          aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-tree;
+        };
       };
     };
 }
