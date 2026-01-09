@@ -30,7 +30,10 @@
   };
 
   # 导入 niri 配置文件
-  xdg.configFile."niri/config.kdl".source = ../../config/niri/config.kdl;
+  xdg.configFile."niri/config.kdl" = {
+    source = ../../config/niri/config.kdl;
+    force = true;
+  };
 
   # 更改配置时优雅地重新加载系统单元
   systemd.user.startServices = "sd-switch";
