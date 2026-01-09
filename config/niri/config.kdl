@@ -61,7 +61,7 @@ input {
     }
 
     // 取消注释以使鼠标移动到新聚焦窗口的中心。
-    // warp-mouse-to-focus
+    warp-mouse-to-focus
 
     // 当鼠标移动到窗口和输出中时自动聚焦。
     // 设置 max-scroll-amount="0%" 使其仅在完全位于屏幕上的窗口上工作。
@@ -74,7 +74,7 @@ input {
 // 在 wiki 上查找更多信息:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // 记得通过删除 "/-" 来取消注释节点!
-/-output "eDP-1" {
+output "eDP-1" {
     // 取消注释此行以禁用此输出。
     // off
 
@@ -83,10 +83,10 @@ input {
     // 如果省略刷新率，niri 将为该分辨率选择最高的刷新率。
     // 如果完全省略模式或模式无效，niri 将自动选择一个。
     // 在 niri 实例中运行 `niri msg outputs` 以列出所有输出及其模式。
-    mode "1920x1080@120.030"
+    mode "1920x1080"
 
     // 你可以使用整数或分数缩放，例如使用 1.5 表示 150% 缩放。
-    scale 2
+    scale 1
 
     // Transform 允许逆时针旋转输出，有效值为:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 和 flipped-270。
@@ -100,7 +100,7 @@ input {
     // 例如，一个 3840×2160 的输出，缩放比例为 2.0，逻辑大小为 1920×1080，
     // 所以要将另一个输出直接放在其右侧，请将其 x 设置为 1920。
     // 如果未设置位置或导致重叠，输出将自动放置。
-    position x=1280 y=0
+    position x=1920 y=0
 }
 
 // 影响窗口定位和大小调整的设置。
@@ -149,7 +149,7 @@ layout {
     // 你可以更改焦点环的外观。
     focus-ring {
         // 取消注释此行以禁用焦点环。
-        // off
+        off
 
         // 环从窗口向外延伸多少逻辑像素。
         width 4
@@ -187,7 +187,7 @@ layout {
     border {
         // 设置与焦点环相同。
         // 如果你启用了边框，你可能想要禁用焦点环。
-        off
+        // off
 
         width 4
         active-color "#ffc87f"
@@ -207,7 +207,7 @@ layout {
     // 你可以为窗口启用投影。
     shadow {
         // 取消注释下一行以启用阴影。
-        // on
+        on
 
         // 默认情况下，阴影仅绘制在其窗口周围，而不绘制在其后面。
         // 取消注释此设置以使阴影绘制在其窗口后面。
@@ -257,7 +257,7 @@ layout {
 // 参阅下面的绑定部分以获取更多 spawn 示例。
 
 // 此行启动 waybar，这也是 Wayland 合成器常用的栏。
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 
 // 要运行 shell 命令（带变量、管道等），请使用 spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -350,9 +350,9 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // 运行程序的建议绑定：终端、应用程序启动器、锁屏。
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
+    Mod+D hotkey-overlay-title="Run an Application: toggle" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
 
     // 使用 spawn-sh 运行 shell 命令。如果你需要管道、多个命令等，请使用此选项。
     // 注意：整个命令作为单个参数传递。它被逐字传递给 `sh -c`。
@@ -378,8 +378,8 @@ binds {
     // brightnessctl 的亮度键映射示例。
     // 你也可以使用带有多个参数的常规 spawn（以避免通过 "sh"），
     // 但你需要手动将每个参数放在单独的 "" 引号中。
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness increase"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness decrease"; }
 
     // 打开/关闭概览：工作区和窗口的缩小视图。
     // 你也可以将鼠标移动到左上角热区，
@@ -582,6 +582,7 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
+    Mod+Shift+S { screenshot; }
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
