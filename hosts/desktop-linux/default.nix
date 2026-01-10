@@ -40,9 +40,6 @@
     description = "${username}";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   system.stateVersion = "25.11";

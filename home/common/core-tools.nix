@@ -98,6 +98,7 @@
       initContent = ''
         # Powerlevel10k 配置
         source ${./p10k.zsh}
+        source ${./conda-init.zsh}
       '';
     };
   };
