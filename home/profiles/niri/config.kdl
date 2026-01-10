@@ -75,7 +75,7 @@ input {
 // 在 wiki 上查找更多信息:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // 记得通过删除 "/-" 来取消注释节点!
-output "eDP-1" {
+/- output "eDP-1" {
     // 取消注释此行以禁用此输出。
     // off
 
