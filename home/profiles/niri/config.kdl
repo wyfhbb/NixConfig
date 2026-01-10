@@ -87,7 +87,7 @@ output "eDP-1" {
     mode "1920x1080"
 
     // 你可以使用整数或分数缩放，例如使用 1.5 表示 150% 缩放。
-    scale 1
+    scale 1.25
 
     // Transform 允许逆时针旋转输出，有效值为:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 和 flipped-270。
@@ -264,7 +264,7 @@ layout {
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 // 启动代理服务 (mihomo + xray)
-spawn-sh-at-startup "bash ~/Startup/start-proxies.sh"
+spawn-sh-at-startup "bash ~/Startup/start-proxies.sh" 
 
 hotkey-overlay {
     // 取消注释此行以禁用启动时的 "Important Hotkeys" 弹出窗口。

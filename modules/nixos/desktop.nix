@@ -39,7 +39,11 @@
     networkmanagerapplet
     termius
     obs-studio
+    wdisplays
   ];
+  # 启用 Niri 窗口管理器（Wayland compositor）
+  programs.niri.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # 选择本地化属性。
   i18n.defaultLocale = "en_US.UTF-8";
@@ -108,10 +112,6 @@
   # 启用 GNOME 桌面环境。
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-
-  # 启用 Niri 窗口管理器（Wayland compositor）
-  programs.niri.enable = true;
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # 某些程序需要 SUID 包装器，可进一步配置，或在用户会话中启动。
   # programs.mtr.enable = true;
