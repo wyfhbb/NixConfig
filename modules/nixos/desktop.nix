@@ -37,7 +37,6 @@
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     # 网络工具
     networkmanagerapplet
-    clash-verge-rev
     termius
     obs-studio
   ];
