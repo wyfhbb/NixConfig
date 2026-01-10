@@ -6,6 +6,21 @@
     wget
     curl
   ];
+
+  # 添加vscode后端以及opencv等各种库的支持
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      libGL
+      libGLU
+      glib
+      xorg.libX11
+      xorg.libXext
+      zlib
+    ];
+  };
+
   services.openssh = {
     enable = true;
     settings = {

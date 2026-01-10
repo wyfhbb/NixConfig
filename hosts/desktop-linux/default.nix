@@ -9,10 +9,13 @@
 
 {
   imports = [
+    # 通用设置
     ../../modules/common/fonts.nix
     ../../modules/common/nix-settings.nix
+    # nixos设置
     ../../modules/nixos/core.nix
     ../../modules/nixos/desktop.nix
+    # 系统硬件适配设置
     /etc/nixos/hardware-configuration.nix
   ];
 
@@ -30,9 +33,6 @@
   hardware.bluetooth.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
-
-  # 增加WSL对于VSCode的支持
-  programs.nix-ld.enable = true;
 
   # 定义用户账户。别忘了用“passwd”设置密码。
   users.users.${username} = {

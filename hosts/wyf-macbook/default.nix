@@ -9,8 +9,10 @@
 
 {
   imports = [
+    # 通用设置
     ../../modules/common/nix-settings.nix
     ../../modules/common/fonts.nix
+    # nix-darwin设置
     ../../modules/darwin/system.nix
     ../../modules/darwin/apps.nix
     ../../modules/darwin/homebrew-mirror.nix

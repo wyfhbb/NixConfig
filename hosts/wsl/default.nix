@@ -9,7 +9,9 @@
 
 {
   imports = [
+    # 通用设置 wsl不需要字体
     ../../modules/common/nix-settings.nix
+    # nixos设置
     ../../modules/nixos/core.nix
   ];
 
@@ -19,9 +21,6 @@
 
   # 修复WSL上NVIDIA-SMI
   environment.variables.LD_LIBRARY_PATH = "/usr/lib/wsl/lib";
-
-  # 增加WSL对于VSCode的支持
-  programs.nix-ld.enable = true;
 
   users.users.${username} = {
     isNormalUser = true;
