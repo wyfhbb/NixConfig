@@ -29,6 +29,25 @@
     };
   };
 
+  home.pointerCursor = {
+    package = pkgs.stdenv.mkDerivation {
+      name = "macOS-cursor";
+      src = ./macOS-cursor.tar.gz;
+      nativeBuildInputs = [ pkgs.gnutar pkgs.gzip ];
+      dontBuild = true;
+      unpackPhase = ''
+        tar -xzf $src
+      '';
+      installPhase = ''
+        mkdir -p $out/share/icons/macOS
+        cp -r macOS/* $out/share/icons/macOS/
+      '';
+    };
+    name = "macOS";
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   # 导入 niri 配置文件
   xdg.configFile."niri/config.kdl" = {
     source = ./niri/config.kdl;

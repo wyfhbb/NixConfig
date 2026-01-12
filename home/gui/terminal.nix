@@ -4,7 +4,7 @@ let
   # 定义通用的配置（不涉及平台差异的部分）
   commonConfig = ''
     font-family = "MesloLGS NF"
-    font-size = 14.6
+    font-size = 12.6
 
     # 自动复制选中文本到系统剪切板
     copy-on-select = clipboard

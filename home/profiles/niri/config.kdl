@@ -343,6 +343,12 @@ layer-rule {
   place-within-backdrop true
 }
 
+// 修改光标
+cursor {
+    xcursor-theme "macOS"
+    xcursor-size 22
+}
+
 // 示例：阻止屏幕捕获两个密码管理器。
 // (此示例规则以前面的 "/-" 注释掉。)
 /-window-rule {
