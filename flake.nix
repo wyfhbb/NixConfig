@@ -99,6 +99,7 @@
                 # home-manager 配置
                 home-manager.useGlobalPkgs = true; # 使用系统级的 pkgs
                 home-manager.useUserPackages = true; # 用户包安装到用户环境
+                home-manager.extraSpecialArgs = { inherit username hostname; };
                 home-manager.users.${username} = import ./home/profiles/macos.nix;
               }
 

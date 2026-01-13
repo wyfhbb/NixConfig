@@ -16,6 +16,7 @@
     htop
     tree
     lazygit
+    nodejs_24
   ];
   nix = {
     # Determinate Nix 使用自己的守护进程来管理 Nix 安装,
