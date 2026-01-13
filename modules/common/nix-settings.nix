@@ -15,6 +15,7 @@
     fastfetch
     htop
     tree
+    lazygit
   ];
   nix = {
     # Determinate Nix 使用自己的守护进程来管理 Nix 安装,
