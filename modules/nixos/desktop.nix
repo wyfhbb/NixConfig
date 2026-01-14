@@ -13,13 +13,20 @@
   boot.loader = {
         efi.canTouchEfiVariables = true;
         systemd-boot.enable = false;
-        grub = { 
+        grub = {
           enable = true;
           efiSupport = true;
           # efiInstallAsRemovable = true;
           device = "nodev";
           useOSProber = true;
+          default = "saved";  # 默认选项为上次启动的选项
+          timeout = 8;        # 等待时间8秒
     };
+        grub2-theme = {
+          enable = true;
+          theme = "whitesur";
+          footer = true;
+        };
   };
 
   # 列出系统环境中已安装的软件包。查询可运行：

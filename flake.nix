@@ -43,6 +43,11 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # grub2-themes: GRUB2 主题
+    grub2-themes = {
+      url = "github:vinceliuice/grub2-themes";
+    };
   };
 
   # ============================================
@@ -57,6 +62,7 @@
       nix-homebrew,
       nixos-wsl,
       noctalia,
+      grub2-themes,
       ...
     }@inputs:
     let
@@ -190,6 +196,9 @@
 
             modules = [
               ./hosts/desktop-linux
+
+              # GRUB2 主题模块
+              grub2-themes.nixosModules.default
 
               # 桌面用完整配置（包含 GUI）
               home-manager.nixosModules.home-manager
