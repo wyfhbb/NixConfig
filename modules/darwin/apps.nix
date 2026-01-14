@@ -55,6 +55,7 @@
       "wechatwork"
       "tencent-meeting"
       "mos"
+      "UTM"
     ];
   };
 }
