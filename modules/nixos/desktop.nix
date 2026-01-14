@@ -40,6 +40,17 @@
     termius
     obs-studio
     wdisplays
+    qq
+    wechat
+    wemeet
+    (wpsoffice-cn.overrideAttrs (old: {
+      nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ makeWrapper ];
+      postFixup = (old.postFixup or "") + ''
+        for i in $out/bin/*; do
+          wrapProgram $i --set LANGUAGE zh_CN
+        done
+      '';
+    }))
   ];
   # 启用 Niri 窗口管理器（Wayland compositor）
   programs.niri.enable = true;
