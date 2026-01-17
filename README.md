@@ -241,8 +241,4 @@ just fmt
     └── profiles/          # System-specific profiles
 ```
 
----
 
-## License
-
-MIT
