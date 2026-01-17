@@ -14,6 +14,31 @@
 | NixOS WSL | x86_64-linux | nixwsl | ✅ Complete |
 | NixOS Server | x86_64-linux | vps-server | 🚧 WIP |
 
+---
+
+## Directory Structure
+
+```
+.
+├── flake.nix              # Flake entry point
+├── flake.lock             # Dependency lock file
+├── Justfile               # Task commands
+├── modules/
+│   ├── common/            # Cross-platform modules
+│   ├── darwin/            # macOS-specific modules
+│   └── nixos/             # NixOS-specific modules
+├── hosts/                 # Host configurations
+│   ├── wyf-macbook/
+│   ├── desktop-linux/
+│   ├── wsl/
+│   └── vps-server/
+└── home/                  # Home Manager configurations
+    ├── common/            # Shared user configs
+    ├── gui/               # GUI-related configs
+    └── profiles/          # System-specific profiles
+```
+
+
 ## Components
 
 ### Nix-Darwin (macOS)
@@ -216,29 +241,4 @@ just gc
 # Format nix files
 just fmt
 ```
-
----
-
-## Directory Structure
-
-```
-.
-├── flake.nix              # Flake entry point
-├── flake.lock             # Dependency lock file
-├── Justfile               # Task commands
-├── modules/
-│   ├── common/            # Cross-platform modules
-│   ├── darwin/            # macOS-specific modules
-│   └── nixos/             # NixOS-specific modules
-├── hosts/                 # Host configurations
-│   ├── wyf-macbook/
-│   ├── desktop-linux/
-│   ├── wsl/
-│   └── vps-server/
-└── home/                  # Home Manager configurations
-    ├── common/            # Shared user configs
-    ├── gui/               # GUI-related configs
-    └── profiles/          # System-specific profiles
-```
-
 
