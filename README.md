@@ -1,4 +1,4 @@
-<h1 align="center">Efan's NixConfig</h1>
+<h1 align="center">:snowflake: Efan's NixConfig :snowflake:</h1>
 
 <p align="center">My personal Nix configuration repository, using Nix Flakes to manage macOS, NixOS Desktop, WSL, and server systems in a unified way.</p>
 
