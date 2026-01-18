@@ -56,6 +56,7 @@
       "tencent-meeting"
       "mos"
       "UTM"
+      "feishu"
     ];
   };
 }
