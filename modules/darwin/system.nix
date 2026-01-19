@@ -76,6 +76,16 @@
       # 所有自定义条目可以通过运行 `defaults read` 命令找到。
       # 或者使用 `defaults read xxx` 读取特定的域。
       CustomUserPreferences = {
+        # 【自定义语言设置】
+        # 系统语言已设置为英文 (NSGlobalDomain.AppleLanguages)
+        # 为以下特定 App 强制使用中文:
+        "com.google.Chrome" = { AppleLanguages = [ "zh-Hans-CN" ]; };
+        "com.tencent.xinWeChat" = { AppleLanguages = [ "zh-Hans-CN" ]; }; # 微信
+        "com.tencent.qq" = { AppleLanguages = [ "zh-Hans-CN" ]; }; # QQ
+        "com.microsoft.Word" = { AppleLanguages = [ "zh-Hans-CN" ]; };
+        "com.microsoft.Excel" = { AppleLanguages = [ "zh-Hans-CN" ]; };
+        "com.microsoft.Powerpoint" = { AppleLanguages = [ "zh-Hans-CN" ]; };
+
         "com.apple.finder" = {
           ShowExternalHardDrivesOnDesktop = true; # 在桌面显示外接硬盘
           ShowMountedServersOnDesktop = true; # 在桌面显示已挂载的服务器

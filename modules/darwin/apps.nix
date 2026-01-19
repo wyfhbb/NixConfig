@@ -57,6 +57,7 @@
       "mos"
       "UTM"
       "feishu"
+      "logi-options+"
     ];
   };
 }
