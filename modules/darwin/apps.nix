@@ -35,7 +35,8 @@
       microsoft-powerpoint = 462062816;
       # https://apps.apple.com/us/app/microsoft-word/id462054704?mt=12 Microsoft Word
       microsoft-word = 462054704;
-
+      # https://apps.apple.com/us/app/windows-app/id1295203466?mt=12 Windows App
+      windows-app = 1295203466;
     };
 
     brews = [
