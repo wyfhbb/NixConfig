@@ -2,14 +2,8 @@
 { config, pkgs, inputs, ... }:
 
 {
-  # TODO: 添加桌面环境配置
-  # - 桌面环境（GNOME/KDE/etc）
-  # - 显示管理器
-  # - GUI 应用
-
   # 启动引导程序。
   # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
   boot.loader = {
         efi.canTouchEfiVariables = true;
         systemd-boot.enable = false;
@@ -130,6 +124,15 @@
   # 启用 GNOME 桌面环境。
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+
+  # 启用 Docker
+  virtualisation.docker = {
+    enable = true;
+    # 允许非 root 用户使用 Docker（需要将用户添加到 docker 组）
+    # 注意：这会授予用户等同于 root 的权限
+  };
+  # 将用户添加到 docker 组
+  users.users.wyf.extraGroups = [ "docker" ];
 
   # 某些程序需要 SUID 包装器，可进一步配置，或在用户会话中启动。
   # programs.mtr.enable = true;
