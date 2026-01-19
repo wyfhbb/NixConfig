@@ -161,6 +161,8 @@
         plugins = [
           "git"
           "tmux"
+          "docker"
+          "docker-compose"
         ];
         theme = "";
       };

@@ -58,6 +58,7 @@
       "UTM"
       "feishu"
       "logi-options+"
+      "docker-desktop"
     ];
   };
 }
