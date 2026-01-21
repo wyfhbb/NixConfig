@@ -2,6 +2,11 @@
 { config, pkgs, ... }:
 
 {
+  # 添加本地二进制变量
+  home.sessionPath = [ 
+    "$HOME/.local/bin"
+  ];
+
   programs = {
     # 现代 vim
     neovim = {
