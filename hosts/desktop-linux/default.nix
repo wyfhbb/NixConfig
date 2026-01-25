@@ -15,6 +15,7 @@
     # nixos设置
     ../../modules/nixos/core.nix
     ../../modules/nixos/desktop.nix
+    ../../modules/nixos/nvidia.nix
     # 系统硬件适配设置
     /etc/nixos/hardware-configuration.nix
   ];
