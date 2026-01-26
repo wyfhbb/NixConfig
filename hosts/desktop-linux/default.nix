@@ -12,6 +12,7 @@
     # 通用设置
     ../../modules/common/fonts.nix
     ../../modules/common/nix-settings.nix
+    ../../modules/common/stylix.nix
     # nixos设置
     ../../modules/nixos/core.nix
     ../../modules/nixos/desktop.nix

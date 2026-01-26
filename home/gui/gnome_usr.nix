@@ -48,6 +48,7 @@
         # "gsconnect@andyholmes.github.io"              # KDE Connect 手机联动
         "dash-to-dock@micxgx.gmail.com"             # 自定义 dock
         "just-perfection.desktop"                    # 更多微调
+        "user-theme@gnome-shell-extensions.gcampax.github.com" # 用户主题支持
       ];
     };
 

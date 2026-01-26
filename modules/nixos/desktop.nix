@@ -86,12 +86,7 @@
   };
 
 
-  # 字体配置
-  fonts.fontconfig.defaultFonts = {
-    serif = [ "PingFang SC" "Noto Serif" ];
-    sansSerif = [ "PingFang SC" "Noto Sans" ];
-    monospace = [ "Noto Sans Mono" "PingFang SC" ];
-  };
+  # 字体配置已迁移到 stylix（modules/common/stylix.nix）
 
   # 在 X11 中配置键盘布局
   services.xserver.xkb = {

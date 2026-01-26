@@ -40,6 +40,7 @@
     gnomeExtensions.appindicator  # 系统托盘图标支持（非常常用）
     gnomeExtensions.blur-my-shell # 窗口/面板模糊效果（美观）
     gnomeExtensions.dash-to-dock  # 如果不喜欢默认 dock，可启用
+    gnomeExtensions.user-themes    # 用户主题（stylix 需要）
   ];
 
   # ────────────────────────────────────────────────

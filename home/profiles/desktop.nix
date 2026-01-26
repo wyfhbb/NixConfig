@@ -10,6 +10,7 @@
     ../gui/terminal.nix
     ../gui/input-method.nix
     ../gui/gnome_usr.nix
+    ../gui/stylix.nix
     # Noctalia Shell 用户配置
     inputs.noctalia.homeModules.default
   ];
@@ -33,24 +34,7 @@
     };
   };
 
-  home.pointerCursor = {
-    package = pkgs.stdenv.mkDerivation {
-      name = "macOS-cursor";
-      src = ../gui/macOS-cursor.tar.gz;
-      nativeBuildInputs = [ pkgs.gnutar pkgs.gzip ];
-      dontBuild = true;
-      unpackPhase = ''
-        tar -xzf $src
-      '';
-      installPhase = ''
-        mkdir -p $out/share/icons/macOS
-        cp -r macOS/* $out/share/icons/macOS/
-      '';
-    };
-    name = "macOS";
-    gtk.enable = true;
-    x11.enable = true;
-  };
+  # 鼠标指针配置已迁移到 stylix（modules/common/stylix.nix）
 
   # 导入 niri 配置文件
   xdg.configFile."niri/config.kdl" = {

@@ -48,6 +48,12 @@
     grub2-themes = {
       url = "github:vinceliuice/grub2-themes";
     };
+
+    # stylix: 统一主题管理（字体、颜色、鼠标指针等）
+    stylix = {
+      url = "github:nix-community/stylix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # ============================================
@@ -63,6 +69,7 @@
       nixos-wsl,
       noctalia,
       grub2-themes,
+      stylix,
       ...
     }@inputs:
     let
@@ -199,6 +206,9 @@
 
               # GRUB2 主题模块
               grub2-themes.nixosModules.default
+
+              # Stylix 统一主题管理
+              stylix.nixosModules.stylix
 
               # 桌面用完整配置（包含 GUI）
               home-manager.nixosModules.home-manager
