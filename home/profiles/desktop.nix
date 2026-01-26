@@ -3,10 +3,14 @@
 
 {
   imports = [
+    # 通用
     ../common/cli-apps.nix
     ../common/core-tools.nix
+    # 带有 GUI 的配置
     ../gui/terminal.nix
     ../gui/input-method.nix
+    ../gui/gnome_usr.nix
+    # Noctalia Shell 用户配置
     inputs.noctalia.homeModules.default
   ];
 
@@ -32,7 +36,7 @@
   home.pointerCursor = {
     package = pkgs.stdenv.mkDerivation {
       name = "macOS-cursor";
-      src = ./macOS-cursor.tar.gz;
+      src = ../gui/macOS-cursor.tar.gz;
       nativeBuildInputs = [ pkgs.gnutar pkgs.gzip ];
       dontBuild = true;
       unpackPhase = ''
@@ -50,7 +54,7 @@
 
   # 导入 niri 配置文件
   xdg.configFile."niri/config.kdl" = {
-    source = ./niri/config.kdl;
+    source = ../gui/niri/config.kdl;
     force = true;
   };
 

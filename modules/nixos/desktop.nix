@@ -123,9 +123,8 @@
   # 启用触控板支持（大多数桌面环境默认已启用）。
   # services.xserver.libinput.enable = true;
 
-  # 启用 GNOME 桌面环境。
+  # 启用 GDM 登录管理器。
   services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
 
   # 启用 Docker
   virtualisation.docker = {
