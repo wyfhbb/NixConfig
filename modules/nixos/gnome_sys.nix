@@ -25,7 +25,9 @@
   environment.gnome.excludePackages = (with pkgs; [
     gnome-tour          # 新手引导
     gnome-user-docs     # 用户手册
+    yelp                # GNOME 帮助
     epiphany            # GNOME Web 浏览器
+    xterm               # XTerm 终端（禁用）
     gnome-contacts      # 联系人（禁用）
   ]);
 
@@ -37,8 +39,6 @@
     gnome-tweaks          # GNOME Tweaks（调整隐藏设置）
     gnomeExtensions.appindicator  # 系统托盘图标支持（非常常用）
     gnomeExtensions.blur-my-shell # 窗口/面板模糊效果（美观）
-    # 保证终端与文件管理器可用
-    gnome-terminal
     gnomeExtensions.dash-to-dock  # 如果不喜欢默认 dock，可启用
   ];
 
