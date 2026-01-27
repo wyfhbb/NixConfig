@@ -41,11 +41,11 @@ in
   stylix = {
     enable = true;
 
-    image = ./room.jpg;
+    image = ./wallpaper.jpg;
 
 
-    # 主题极性：深色（壁纸在 home manager 中设置）
-    polarity = "dark";
+    # 主题极性：深色
+    polarity = "light";
 
     # ────────────────────────────────────────────────
     # 禁用与其他模块冲突的目标

@@ -7,47 +7,48 @@
   dconf.enable = true;
 
   # ────────────────────────────────────────────────
-  # 常用界面与行为设置
+  # GNOME 设置（合并到一个 dconf.settings 避免覆盖）
   # ────────────────────────────────────────────────
   dconf.settings = {
+    # 常用界面与行为设置
     "org/gnome/desktop/interface" = {
-      color-scheme    = "prefer-dark";      # 强制深色模式（GTK4 生效）
-      show-battery-percentage = true;       # 显示电池百分比
-      clock-show-weekday = true;            # 顶部栏时钟显示星期
+      color-scheme    = "default";      # 强制深色模式（GTK4 生效）
+      show-battery-percentage = true;        # 显示电池百分比
+      clock-show-weekday = true;             # 顶部栏时钟显示星期
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
-      natural-scroll = true;               # 自然滚动（macOS 风格）
-      tap-to-click   = true;               # 轻触点击
+      natural-scroll = true;                 # 自然滚动（macOS 风格）
+      tap-to-click   = true;                 # 轻触点击
+    };
+
+    # 标题栏按钮顺序：右侧依次 最小化/最大化/关闭
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = ":minimize,maximize,close";
     };
 
     "org/gnome/mutter" = {
       # 如果 configuration.nix 没设,这里也可以再强化
       experimental-features = [ "scale-monitor-framebuffer" ];
-      dynamic-workspaces = true;           # 动态工作区(默认推荐)
-      edge-tiling = true;                  # 窗口贴边自动半屏
+      dynamic-workspaces = true;             # 动态工作区(默认推荐)
+      edge-tiling = true;                    # 窗口贴边自动半屏
     };
 
     "org/gnome/settings-daemon/plugins/power" = {
-      sleep-inactive-ac-type = "nothing";  # 插电不休眠（桌面机常用）
+      sleep-inactive-ac-type = "nothing";   # 插电不休眠（桌面机常用）
     };
-  };
 
-  # ────────────────────────────────────────────────
-  # 启用 GNOME 扩展（用户级，最常用在这里管理）
-  # 需要先在 configuration.nix 或 home.packages 里安装扩展包
-  # ────────────────────────────────────────────────
-  dconf.settings = {
+    # GNOME 扩展（用户级，需先安装扩展包）
     "org/gnome/shell" = {
       disable-user-extensions = false;
 
       # 常用扩展 UUID（根据你安装的包替换）
       enabled-extensions = [
-        "appindicatorsupport@rgcjonas.gmail.com"     # 系统托盘
+        "appindicatorsupport@rgcjonas.gmail.com"      # 系统托盘
         "blur-my-shell@aunetx"                        # 模糊效果
         # "gsconnect@andyholmes.github.io"              # KDE Connect 手机联动
-        "dash-to-dock@micxgx.gmail.com"             # 自定义 dock
-        "just-perfection.desktop"                    # 更多微调
+        "dash-to-dock@micxgx.gmail.com"              # 自定义 dock
+        "just-perfection-desktop@just-perfection"    # 更多微调
         "user-theme@gnome-shell-extensions.gcampax.github.com" # 用户主题支持
       ];
     };

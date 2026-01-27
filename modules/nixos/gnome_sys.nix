@@ -41,6 +41,7 @@
     gnomeExtensions.blur-my-shell # 窗口/面板模糊效果（美观）
     gnomeExtensions.dash-to-dock  # 如果不喜欢默认 dock，可启用
     gnomeExtensions.user-themes    # 用户主题（stylix 需要）
+    gnomeExtensions.just-perfection # 这个没在 systemPackages 里，所以这里装
   ];
 
   # ────────────────────────────────────────────────
@@ -68,7 +69,7 @@
   qt = {
     enable = true;
     platformTheme = "gnome";          # 让 Qt 用 GNOME 的主题设置
-    style = "adwaita-dark";           # 深色 Adwaita（或改成 adwaita）
+    style = "adwaita";           # 深色 Adwaita（或改成 adwaita）
   };
 
   # ────────────────────────────────────────────────
