@@ -12,7 +12,7 @@
   dconf.settings = {
     # 常用界面与行为设置
     "org/gnome/desktop/interface" = {
-      color-scheme    = "default";      # 强制深色模式（GTK4 生效）
+      color-scheme    = "prefer-dark";      # 强制深色模式（GTK4 生效）
       show-battery-percentage = true;        # 显示电池百分比
       clock-show-weekday = true;             # 顶部栏时钟显示星期
     };

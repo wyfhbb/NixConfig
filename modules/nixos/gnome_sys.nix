@@ -69,7 +69,7 @@
   qt = {
     enable = true;
     platformTheme = "gnome";          # 让 Qt 用 GNOME 的主题设置
-    style = "adwaita";           # 深色 Adwaita（或改成 adwaita）
+    style = "adwaita-dark";           # 深色 Adwaita（或改成 adwaita）
   };
 
   # ────────────────────────────────────────────────
