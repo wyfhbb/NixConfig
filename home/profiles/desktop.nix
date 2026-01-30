@@ -9,7 +9,7 @@
     # 带有 GUI 的配置
     ../gui/terminal.nix
     ../gui/input-method.nix
-    ../gui/gnome_usr.nix
+    ../gui/gnome.nix
     # Noctalia Shell 用户配置
     inputs.noctalia.homeModules.default
   ];

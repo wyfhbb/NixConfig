@@ -54,6 +54,7 @@
     }))
     # 系统工具
     gparted
+    mission-center
   ];
   # 启用 Niri 窗口管理器（Wayland compositor）
   programs.niri.enable = true;
