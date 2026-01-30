@@ -47,6 +47,8 @@
         "blur-my-shell@aunetx"                        # 模糊效果
         "dash-to-dock@micxgx.gmail.com"             # 自定义 dock
         "tophat@fflewddur.github.io" # 系统监视器扩展
+        "compiz-alike-magic-lamp-effect@hermes83.github.com"
+        "transparent-window-moving@noobsai.github.com"
       ];
     };
 
@@ -55,6 +57,54 @@
       panel-brightness = 0.8;
       overview-brightness = 0.7;
       panel-blur = true;
+    };
+
+    # ────────────────────────────────────────────────
+    # Dash to Dock 扩展配置
+    # ────────────────────────────────────────────────
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      # ──── 位置与可见性 ────
+      dock-position = "BOTTOM";           # 位置: LEFT, RIGHT, TOP, BOTTOM
+      dock-fixed = false;                 # 是否固定显示（false 为自动隐藏）
+      autohide = true;                    # 自动隐藏
+      intellihide = true;                 # 智能隐藏（窗口接近时隐藏）
+      extend-height = false;              # 是否延伸到屏幕边缘
+
+      # ──── 动画与时间 ────
+      animation-time = 0.2;               # 动画时长（秒）
+      show-delay = 0.25;                  # 显示延迟（秒）
+      hide-delay = 0.20;                  # 隐藏延迟（秒）
+
+      # ──── 外观 ────
+      dash-max-icon-size = 48;            # 最大图标大小（16-64）
+      transparency-mode = "DYNAMIC";      # 透明度模式: DEFAULT, FIXED, DYNAMIC
+      background-opacity = 0.8;           # 背景不透明度（0.0-1.0）
+      # apply-custom-theme = false;       # 应用自定义主题
+      # custom-theme-shrink = false;      # 缩小自定义主题
+
+      # ──── 点击行为 ────
+      click-action = "cycle-windows";     # 点击: cycle-windows, minimize, launch 等
+      middle-click-action = "launch";     # 中键点击行为
+      shift-click-action = "minimize";    # Shift+点击行为
+
+      # ──── 显示选项 ────
+      show-running = true;                # 显示正在运行的应用
+      show-favorites = true;              # 显示收藏的应用
+      show-trash = true;                  # 显示回收站图标
+      show-mounts = true;                 # 显示挂载的卷
+      show-show-apps-button = true;       # 显示应用程序按钮
+      show-apps-at-top = false;           # 将应用程序按钮放在顶部
+
+      # ──── 多显示器 ────
+      # multi-monitor = false;            # 在所有显示器上显示
+      # preferred-monitor = -1;           # 首选显示器（-1 为主显示器）
+
+      # ──── 快捷键 ────
+      hot-keys = false;                    # 启用 Super+(0-9) 快捷键
+
+      # ──── 工作区 ────
+      # isolate-workspaces = false;       # 仅显示当前工作区的应用
+      # isolate-monitors = false;         # 仅显示当前显示器的应用
     };
 
     # ────────────────────────────────────────────────

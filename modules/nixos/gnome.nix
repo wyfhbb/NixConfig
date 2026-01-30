@@ -41,6 +41,8 @@
     gnomeExtensions.blur-my-shell # 窗口/面板模糊效果（美观）
     gnomeExtensions.dash-to-dock  # 如果不喜欢默认 dock，可启用
     gnomeExtensions.tophat # 系统监视器扩展
+    gnomeExtensions.compiz-alike-magic-lamp-effect # 窗口动画效果
+    gnomeExtensions.transparent-window-moving
   ];
 
   # ────────────────────────────────────────────────
