@@ -45,9 +45,8 @@
       enabled-extensions = [
         "appindicatorsupport@rgcjonas.gmail.com"     # 系统托盘
         "blur-my-shell@aunetx"                        # 模糊效果
-        # "gsconnect@andyholmes.github.io"              # KDE Connect 手机联动
         "dash-to-dock@micxgx.gmail.com"             # 自定义 dock
-        "just-perfection.desktop"                    # 更多微调
+        "tophat@fflewddur.github.io" # 系统监视器扩展
       ];
     };
 
@@ -58,10 +57,54 @@
       panel-blur = true;
     };
 
-    # 示例：gsconnect 设置（手机互联）
-    # "org/gnome/shell/extensions/gsconnect" = {
-    #   # name = "My NixOS Laptop";
-    # };
+    # ────────────────────────────────────────────────
+    # TopHat 系统监视器扩展配置
+    # ────────────────────────────────────────────────
+    "org/gnome/shell/extensions/tophat" = {
+      # 面板位置（生效）
+      position-in-panel = "left";  # 可选: leftedge, left, center, right, rightedge
+
+      # ──── 显示模式 ────
+      # cpu-display = "chart";        # CPU 显示模式: chart, numeric, both
+      # mem-display = "chart";        # 内存显示模式: chart, numeric, both
+      # fs-display = "chart";         # 文件系统显示模式: chart, numeric, both
+
+      # ──── 显示开关 ────
+      # show-icons = true;            # 显示监视器图标
+      # show-menu-actions = true;     # 显示菜单操作按钮
+      # show-cpu = true;              # 显示 CPU 监视器
+      # show-mem = true;              # 显示内存监视器
+      # show-net = true;              # 显示网络监视器
+      # show-disk = false;            # 显示磁盘 I/O 监视器
+      # show-fs = true;               # 显示文件系统监视器
+
+      # ──── 外观设置 ────
+      # meter-fg-color = "#1dacd6";   # 进度条和图表颜色（十六进制或 RGBA）
+      # use-system-accent = true;     # 使用系统主题色（GNOME 47+）
+
+      # ──── 性能设置 ────
+      # refresh-rate = "medium";      # 刷新频率: slow, medium, fast
+
+      # ──── CPU 相关 ────
+      # cpu-show-cores = true;        # 显示各个 CPU 核心
+      # cpu-sort-cores = true;        # 按使用率排序 CPU 核心
+      # cpu-normalize-proc-use = true; # 按核心数归一化进程 CPU 使用率
+
+      # ──── 内存相关 ────
+      # mem-abs-units = false;        # 使用绝对单位显示内存（而非百分比）
+
+      # ──── 网络相关 ────
+      # network-device = "";          # 指定监视的网络设备（空则自动选择）
+      # network-usage-unit = "bytes"; # 网络流量单位: bytes, bits
+
+      # ──── 文件系统相关 ────
+      # mount-to-monitor = "";        # 指定监视的挂载点（空则自动选择）
+      # fs-hide-in-menu = "";         # 在菜单中隐藏的挂载点（逗号分隔）
+
+      # ──── 进程设置 ────
+      # group-procs = true;           # 对进程分组显示
+    };
+
   };
 
   # ────────────────────────────────────────────────
