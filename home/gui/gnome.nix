@@ -31,6 +31,10 @@
     "org/gnome/settings-daemon/plugins/power" = {
       sleep-inactive-ac-type = "nothing";  # 插电不休眠（桌面机常用）
     };
+
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = "appmenu:minimize,maximize,close";  # 窗口按钮布局：左侧应用菜单，右侧最小化、最大化、关闭
+    };
   };
 
   # ────────────────────────────────────────────────
