@@ -13,9 +13,8 @@
     stateVersion = "25.11";
   };
 
-  # 启用 home-manager 和 git
+  # 启用 home-manager
   programs.home-manager.enable = true;
-  programs.git.enable = true;
 
   # 更改配置时优雅地重新加载系统单元
   systemd.user.startServices = "sd-switch";

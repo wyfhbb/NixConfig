@@ -20,9 +20,8 @@
     stateVersion = "25.11";
   };
 
-  # 启用 home-manager 和 git
+  # 启用 home-manager
   programs.home-manager.enable = true;
-  programs.git.enable = true;
 
   # Noctalia Shell 配置
   programs.noctalia-shell = {
