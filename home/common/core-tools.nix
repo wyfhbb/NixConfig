@@ -160,12 +160,30 @@
     git = {
       enable = true;
 
-      # 用户信息（请修改为你的信息）
-      userName = "wyf";
-      userEmail = "102380235+wyfhbb@users.noreply.github.com";
+      ignores = [
+        # macOS 系统文件
+        ".DS_Store"
+        ".AppleDouble"
+        ".LSOverride"
 
-      # 核心配置
-      extraConfig = {
+        # Windows 系统文件
+        "Thumbs.db"
+        "Desktop.ini"
+        "$RECYCLE.BIN/"
+
+        # Linux 系统文件
+        ".Trash-*"
+        ".directory"
+      ];
+
+      settings = {
+        # 用户信息（请修改为你的信息）
+        user = {
+          name = "wyf";
+          email = "102380235+wyfhbb@users.noreply.github.com";
+        };
+
+        # 核心配置
         # 基础设置
         init.defaultBranch = "main";
         core = {
@@ -216,61 +234,44 @@
         # 其他实用配置
         help.autocorrect = 1;  # 自动纠正拼写错误的命令
         rerere.enabled = true;  # 记住冲突解决方案
+
+        # Git 别名
+        alias = {
+          # 状态和日志
+          st = "status -sb";  # 简洁状态
+          lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+          ll = "log --oneline --graph --all --decorate";
+
+          # 提交相关
+          co = "checkout";
+          ci = "commit";
+          cm = "commit -m";
+          ca = "commit --amend";
+          can = "commit --amend --no-edit";
+
+          # 分支管理
+          br = "branch";
+          brd = "branch -d";
+          brD = "branch -D";
+
+          # 变更操作
+          undo = "reset --soft HEAD^";  # 撤销上一次提交
+          unstage = "reset HEAD --";    # 取消暂存
+
+          # 差异查看
+          df = "diff";
+          dfc = "diff --cached";
+
+          # 拉取和推送
+          pl = "pull";
+          ps = "push";
+          pf = "push --force-with-lease";  # 更安全的强制推送
+
+          # 其他实用命令
+          last = "log -1 HEAD --stat";  # 查看最后一次提交
+          alias = "config --get-regexp ^alias\\.";  # 列出所有别名
+        };
       };
-
-      # Git 别名
-      aliases = {
-        # 状态和日志
-        st = "status -sb";  # 简洁状态
-        lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-        ll = "log --oneline --graph --all --decorate";
-
-        # 提交相关
-        co = "checkout";
-        ci = "commit";
-        cm = "commit -m";
-        ca = "commit --amend";
-        can = "commit --amend --no-edit";
-
-        # 分支管理
-        br = "branch";
-        brd = "branch -d";
-        brD = "branch -D";
-
-        # 变更操作
-        undo = "reset --soft HEAD^";  # 撤销上一次提交
-        unstage = "reset HEAD --";    # 取消暂存
-
-        # 差异查看
-        df = "diff";
-        dfc = "diff --cached";
-
-        # 拉取和推送
-        pl = "pull";
-        ps = "push";
-        pf = "push --force-with-lease";  # 更安全的强制推送
-
-        # 其他实用命令
-        last = "log -1 HEAD --stat";  # 查看最后一次提交
-        alias = "config --get-regexp ^alias\\.";  # 列出所有别名
-      };
-
-      # Git 忽略文件（全局）- 只包含系统垃圾文件
-      ignores = [
-        # macOS 系统文件
-        ".DS_Store"
-        ".AppleDouble"
-        ".LSOverride"
-
-        # Windows 系统文件
-        "Thumbs.db"
-        "Desktop.ini"
-        "$RECYCLE.BIN/"
-
-        # Linux 系统文件
-        ".Trash-*"
-        ".directory"
-      ];
     };
 
     zsh = {
