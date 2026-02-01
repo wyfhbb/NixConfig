@@ -84,7 +84,7 @@
       transparency-mode = "DYNAMIC";      # 透明度模式: DEFAULT, FIXED, DYNAMIC
       background-opacity = 0.8;           # 背景不透明度（0.0-1.0）
       # apply-custom-theme = false;       # 应用自定义主题
-      # custom-theme-shrink = false;      # 缩小自定义主题
+      custom-theme-shrink = true;      # 缩小自定义主题
 
       # ──── 点击行为 ────
       click-action = "cycle-windows";     # 点击: cycle-windows, minimize, launch 等

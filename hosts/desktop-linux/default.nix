@@ -15,7 +15,7 @@
     # nixos设置
     ../../modules/nixos/core.nix
     ../../modules/nixos/desktop.nix
-    ../../modules/nixos/nvidia.nix
+    ../../modules/nixos/graphic.nix
     ../../modules/nixos/gnome.nix
     # 系统硬件适配设置
     /etc/nixos/hardware-configuration.nix
@@ -31,14 +31,24 @@
   # 启用网络
   networking.networkmanager.enable = true;
 
+  # 配置 64GB Swap 文件（编译内核/休眠使用）
+  swapDevices = [{
+    device = "/swapfile";
+    size = 64 * 1024;
+  }];
+
   # Noctalia 必需的系统服务
   hardware.bluetooth.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
+  powerManagement = {
+      enable = true;                     # 通常默认已启用，可省略
+      cpuFreqGovernor = "schedutil";     # ← 这里改你想要的 governor
+    };
 
   # --- Intel Ultra (Meteor Lake) ---
   # 使用最新内核以获得更好的 SoundWire/SOF 支持
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_oem;
 
   # 启用所有非自由固件，并显式加载 SOF 固件
   hardware.enableAllFirmware = true;
