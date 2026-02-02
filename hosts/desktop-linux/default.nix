@@ -41,10 +41,22 @@
   hardware.bluetooth.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
-  powerManagement = {
-      enable = true;                     # 通常默认已启用，可省略
-      cpuFreqGovernor = "schedutil";     # ← 这里改你想要的 governor
-    };
+  # CPU 性能调节器
+  services.thermald.enable = true;
+  # services.auto-cpufreq = {
+  #   enable = true;
+  #   settings = {
+  #     charger = {
+  #       governor = "performance";
+  #       turbo = "always";
+  #     };
+  #     battery = {
+  #       governor = "powersave";
+  #       turbo = "auto";
+  #     };
+  #   };
+  # };
+  boot.kernelParams = [ "intel_pstate=active" ];
 
   # --- Intel Ultra (Meteor Lake) ---
   # 使用最新内核以获得更好的 SoundWire/SOF 支持
