@@ -1,103 +1,105 @@
 { config, pkgs, ... }:
 
 {
-  # 必须：允许 NVIDIA unfree 包（user-space 仍是闭源）
+  # 必须：允许 NVIDIA unfree 包
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
-      "nvidia-x11"          # NVIDIA 驱动（名字虽有 x11，但 Wayland 也需要）
+      "nvidia-x11"
       "nvidia-persistenced"
     ];
 
-  # 图形支持（新版 NixOS 必须）
+  # 图形支持
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;  # 32 位应用支持
+    enable32Bit = true;
 
-    # Intel 核显硬件加速驱动（VA-API + Vulkan）
     extraPackages = with pkgs; [
-      # VA-API 视频解码/编码
-      intel-media-driver      # 新 Intel GPU (Broadwell+) - 解码和编码
-      intel-vaapi-driver      # 老 Intel GPU 兼容（如果确定是新 GPU 可移除）
+      # VA-API 视频解码/编码（二选一即可，新 Intel GPU 用 intel-media-driver）
+      intel-media-driver      # 新 Intel GPU (Broadwell+)
+      # intel-vaapi-driver    # 老 Intel GPU，确定是新 GPU 可注释掉
 
-      # Vulkan 驱动（现代图形 API，WebGPU 需要）
-      intel-media-driver      # Intel Vulkan 驱动
+      # Vulkan 支持（mesa 已包含 Intel Vulkan 驱动 ANV）
+      vulkan-loader
 
       # OpenCL 支持
-      intel-compute-runtime   # OpenCL 支持
+      intel-compute-runtime
 
-      # libva-vdpau-driver    # VDPAU 桥接（仅旧应用需要，现代应用直接用 VA-API）
-      # libvdpau-va-gl        # VDPAU 桥接（仅旧应用需要）
+      # VDPAU -> VA-API 桥接（部分旧应用如 mpv 旧配置可能需要）
+      libvdpau-va-gl
     ];
 
-    # 32 位硬件加速支持（某些游戏/应用需要）
     extraPackages32 = with pkgs.pkgsi686Linux; [
       intel-media-driver
-      # libva-vdpau-driver    # 仅旧应用需要
+      vulkan-loader
     ];
   };
 
-  # 视频驱动：modesetting 给 Intel 核显用，nvidia 给独显用
-  # 顺序重要：modesetting 放前面，确保 X/Wayland 默认用 Intel
+  # 视频驱动顺序：modesetting 优先（Intel），nvidia 其次
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
 
   hardware.nvidia = {
-    # RTX 50 系列推荐 open = true（开源内核模块，更好兼容 Wayland + 电源管理）
+    # RTX 50/40/30 系列推荐 open = true
     open = true;
 
-    # 稳定版驱动（RTX 50 系列已支持，推荐 stable 或 production）
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-    # 如果 stable 不行或想更新更快：用 .production 或 .beta
 
-    modesetting.enable = true;          # Wayland / 混合图形必须
-    nvidiaSettings = false;             # nvidia-settings 主要用于 X11 调优，Wayland 下可禁用节省空间
-    nvidiaPersistenced = true;          # 帮助电源管理和稳定性
+    modesetting.enable = true;
+    nvidiaSettings = false;             # Wayland 下不需要
+    nvidiaPersistenced = true;
 
-    # 电源管理（笔记本强烈推荐，帮独显更容易休眠）
+    # 电源管理
     powerManagement.enable = true;
-    powerManagement.finegrained = true;  # RTX 40/50 系列支持更细粒度省电，可选开启试试
-  };
+    powerManagement.finegrained = true; # RTX 30+ 支持细粒度省电
 
-  # PRIME Offload 配置：核显优先，独显按需
-  hardware.nvidia.prime = {
-    offload = {
-      enable = true;
-      enableOffloadCmd = true;          # 关键！生成 nvidia-offload 命令
+    # PRIME Offload 配置
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;        # 生成 nvidia-offload 命令
+      };
+
+      # PCI Bus ID（根据你的硬件）
+      intelBusId = "PCI:0@0:2:0";
+      nvidiaBusId = "PCI:2@0:0:0";
     };
-
-    # 你的 PCI ID（已转换）
-    intelBusId = "PCI:0@0:2:0";
-    nvidiaBusId = "PCI:2@0:0:0";
   };
 
-  # Wayland / 常见修复（强烈建议加）
+  # 内核参数
   boot.kernelParams = [
-    "nvidia-drm.modeset=1"            # Wayland 支持必须
-    # 如果 suspend/resume 有问题，可加下面这行（把临时文件放 /var/tmp，避免 /tmp 被清）
-    # "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+    "nvidia-drm.modeset=1"
+    "nvidia-drm.fbdev=1"              # 改善 TTY/Plymouth 显示
+    # suspend 问题可取消注释:
+    # "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
-  # 环境变量（修复部分 Electron/Chromium 应用 + 硬件解码）
+  # 环境变量
   environment.variables = {
-    # 注意：PRIME Offload 模式下，大部分应用默认用 Intel 核显
-    # 只有通过 nvidia-offload 命令启动的应用才用 NVIDIA
+    # Intel VA-API 驱动
+    LIBVA_DRIVER_NAME = "iHD";
 
-    # Intel 核显优先用于日常任务（包括视频解码/编码）
-    LIBVA_DRIVER_NAME = "iHD";             # iHD = intel-media-driver（推荐）
-    # 如果 iHD 有问题，可改为 "i965" (intel-vaapi-driver)
-
-    # 注意: 不设置 NIXOS_OZONE_WL，让 Chrome 使用 XWayland (X11)
-    # 这样可以在 Wayland 会话中启用 Vulkan + WebGPU 支持
-
-    # NVIDIA 相关环境变量（仅在 offload 时生效）
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";  # GLX offload 支持
-    # GBM_BACKEND = "nvidia-drm";          # 注释掉，避免与 Intel 冲突
+    # Vulkan 设备选择：优先 Intel（设备索引 0 通常是集显）
+    # 如果应用支持，可用此变量指定默认 Vulkan 设备
+    # VK_LOADER_DEVICE_SELECT = "10de:*";  # 强制选择 NVIDIA
   };
 
-  # 推荐工具
+  # 环境变量 - sessionVariables 更适合桌面会话
+  environment.sessionVariables = {
+    # EGL 优先用 Mesa（Intel）
+    __EGL_VENDOR_LIBRARY_FILENAMES = "/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
+
+    # Electron/Chromium Wayland 支持（可选，启用后 Chrome 原生 Wayland）
+    # NIXOS_OZONE_WL = "1";
+
+    # 如果需要强制 GLX 用 NVIDIA（offload 场景通常不需要全局设置）
+    # __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
+
+  # 工具包
   environment.systemPackages = with pkgs; [
-    nvtopPackages.full     # 超好用的 GPU 监控（看独显是否真的休眠）
-    mesa                   # 确保 Intel 核显 OpenGL/Vulkan 支持
-    vulkan-tools           # Vulkan 工具（vulkaninfo 等）
-    libva-utils            # VA-API 工具（vainfo 等）
+    nvtopPackages.full        # GPU 监控
+    vulkan-tools              # vulkaninfo
+    libva-utils               # vainfo
+    mesa-demos                   # GLX 信息
+    pciutils                  # lspci
   ];
 }
