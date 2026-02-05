@@ -39,17 +39,26 @@
 
   hardware.nvidia = {
     # RTX 50/40/30 系列推荐 open = true
+    # 如果遇到 50W TDP 锁功耗问题，或者是旧款显卡，尝试改为 false 使用闭源内核模块
     open = true;
 
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     modesetting.enable = true;
     nvidiaSettings = false;             # Wayland 下不需要
-    nvidiaPersistenced = true;
+    
+    # ！！！关键修改：Offload 模式下为了让显卡休眠（D3cold），必须关闭 persistenced
+    nvidiaPersistenced = false;
 
     # 电源管理
     powerManagement.enable = true;
     powerManagement.finegrained = true; # RTX 30+ 支持细粒度省电
+
+    # 尝试解决 50W 锁功耗问题 (启用 Dynamic Boost)
+    # 注意：这需要 hardware.opengl.extraPackages 中包含 nvidia-powerd 的相关支持，
+    # 或者某些 NixOS 版本通过 dynamicBoost.enable 开启。
+    # 25.05+ 后通常不需要手动配置 powerd，但如果有问题可尝试显式开启：
+    dynamicBoost.enable = true; 
 
     # PRIME Offload 配置
     prime = {
