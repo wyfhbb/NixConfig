@@ -15,6 +15,7 @@
           device = "nodev";
           useOSProber = true;
           default = "saved";  # 默认选项为上次启动的选项
+          configurationLimit = 10; # 限制保留最近 10 个引导项，防止 /boot 爆满 !!
     };
         grub2-theme = {
           enable = true;
