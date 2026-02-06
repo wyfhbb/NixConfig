@@ -42,6 +42,7 @@
     brews = [
       "curl" # 不要通过 nixpkgs 安装 curl，它在 macOS 上工作不正常！
       "wget"
+      "sox" # 处理音频文件
     ];
 
     casks = [
