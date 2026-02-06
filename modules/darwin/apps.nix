@@ -61,6 +61,7 @@
       "feishu"
       "logi-options+"
       "docker-desktop"
+      "baidunetdisk"
     ];
   };
 }
