@@ -56,6 +56,10 @@
     # 系统工具
     gparted
     mission-center
+    # 新增功耗分析工具
+    powertop                  # 功耗总览与分析
+    lm_sensors                # 查看 CPU 功耗/温度 (sensors)
+    intel-gpu-tools           # 查看 Intel 核显功耗 (intel_gpu_top)
   ];
   # 启用 Niri 窗口管理器（Wayland compositor）
   programs.niri.enable = true;
