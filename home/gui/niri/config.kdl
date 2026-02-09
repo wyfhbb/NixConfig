@@ -330,7 +330,7 @@ window-rule {
 
   // 窗口透明度设置
   // 焦点窗口的不透明度 (1.0 = 完全不透明，清晰显示)
-  opacity 0.9
+  opacity 0.95
 }
 
 debug {
