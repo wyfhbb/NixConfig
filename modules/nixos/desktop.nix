@@ -1,6 +1,12 @@
 # 桌面环境配置
 { config, pkgs, inputs, ... }:
 
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
 {
   # 启动引导程序。
   # boot.loader.systemd-boot.enable = true;
@@ -29,30 +35,16 @@
   environment.systemPackages = with pkgs; [
     # 启用xwayland支持
     xwayland-satellite
-    vscode
     google-chrome
     ghostty
     # GNOM
-    gnomeExtensions.appindicator  # 托盘图标支持
     file-roller  # 解压缩
     # Noctalia Shell
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     # 网络工具
     networkmanagerapplet
-    termius
     obs-studio
     wdisplays
-    qq
-    wechat
-    wemeet
-    (wpsoffice-cn.overrideAttrs (old: {
-      nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ makeWrapper ];
-      postFixup = (old.postFixup or "") + ''
-        for i in $out/bin/*; do
-          wrapProgram $i --set LANGUAGE zh_CN
-        done
-      '';
-    }))
     # 系统工具
     gparted
     mission-center
@@ -60,6 +52,20 @@
     powertop                  # 功耗总览与分析
     lm_sensors                # 查看 CPU 功耗/温度 (sensors)
     intel-gpu-tools           # 查看 Intel 核显功耗 (intel_gpu_top)
+    # unstable 版本
+    unstable.vscode
+    unstable.termius
+    unstable.qq
+    unstable.wechat
+    unstable.wemeet
+    (unstable.wpsoffice-cn.overrideAttrs (old: {
+      nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
+      postFixup = (old.postFixup or "") + ''
+        for i in $out/bin/*; do
+          wrapProgram $i --set LANGUAGE zh_CN
+        done
+      '';
+    }))
   ];
   # 启用 Niri 窗口管理器（Wayland compositor）
   programs.niri.enable = true;

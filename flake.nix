@@ -17,6 +17,9 @@
     # nixpkgs: Nix 官方软件包仓库（所有平台共用一个版本，简化配置）
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
+    # nixpkgs-unstable: 供需要 latest 版本的软件使用
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     # home-manager: 用户环境管理工具（管理 dotfiles、软件等）
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
