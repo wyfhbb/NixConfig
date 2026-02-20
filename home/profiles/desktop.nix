@@ -23,10 +23,11 @@
   # 启用 home-manager
   programs.home-manager.enable = true;
 
-  # Noctalia Shell 配置
+  # Noctalia Shell 配置（systemd 自启已关闭，改由 niri spawn-at-startup 拉起，
+  # 避免在 GNOME 会话下也启动导致空转吃 CPU）
   programs.noctalia-shell = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
     settings = {
       # 在此添加您的 Noctalia 配置
     };

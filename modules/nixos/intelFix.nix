@@ -40,19 +40,6 @@ in
   ];
 
   services.thermald.enable = true;
-  # services.auto-cpufreq = {
-  #   enable = true;
-  #   settings = {
-  #     charger = {
-  #       governor = "performance";
-  #       turbo = "always";
-  #     };
-  #     battery = {
-  #       governor = "powersave";
-  #       turbo = "auto";
-  #     };
-  #   };
-  # };
   boot.kernelParams = [ 
     "intel_pstate=active"
     # 尝试不同的 model，或者移除让驱动自动检测
