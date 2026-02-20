@@ -81,8 +81,8 @@
       # darwinConfigurations: macOS 系统配置
       # ==========================================
       darwinConfigurations = {
-        # 配置名称: wyf-macbook（你可以自定义，部署时会用到）
-        wyf-macbook =
+        # 配置名称: darwin（你可以自定义，部署时会用到）
+        darwin =
           let
             # 此主机的特定变量
             hostname = "wyf-macbook";
