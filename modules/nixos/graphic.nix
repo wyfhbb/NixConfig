@@ -96,11 +96,8 @@
     # EGL 优先用 Mesa（Intel）
     __EGL_VENDOR_LIBRARY_FILENAMES = "/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
 
-    # CUDA/NVIDIA 库路径 - 让 PyTorch 等能找到 NVIDIA 驱动
-    LD_LIBRARY_PATH = "/run/opengl-driver/lib";
-
-    # Electron/Chromium Wayland 支持（可选，启用后 Chrome 原生 Wayland）
-    # NIXOS_OZONE_WL = "1";
+    # 告知 nixpkgs 打包的 Electron/Chromium 应用使用 Wayland 原生渲染
+    NIXOS_OZONE_WL = "1";
 
     # 如果需要强制 GLX 用 NVIDIA（offload 场景通常不需要全局设置）
     # __GLX_VENDOR_LIBRARY_NAME = "nvidia";

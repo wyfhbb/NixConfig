@@ -21,6 +21,13 @@
     ];
   };
 
+  # 全局库路径
+  # programs.nix-ld 只对通过 ld-linux 加载的程序生效；
+  # 对于 dlopen() 动态加载（如 Electron/ANGLE 加载 libGL），需要 LD_LIBRARY_PATH
+  environment.sessionVariables = {
+    LD_LIBRARY_PATH = "${pkgs.libGL}/lib:/run/opengl-driver/lib";
+  };
+
   services.openssh = {
     enable = true;
     settings = {

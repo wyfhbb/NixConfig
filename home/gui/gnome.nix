@@ -23,7 +23,9 @@
 
     "org/gnome/mutter" = {
       # 如果 configuration.nix 没设,这里也可以再强化
-      experimental-features = [ "scale-monitor-framebuffer" ];
+      # scale-monitor-framebuffer：分数缩放（native Wayland 应用按物理分辨率渲染）
+      # xwayland-native-scaling：让 XWayland 也以物理分辨率渲染，消除 XWayland 模糊
+      experimental-features = [ "scale-monitor-framebuffer" "xwayland-native-scaling" ];
       dynamic-workspaces = true;           # 动态工作区(默认推荐)
       edge-tiling = true;                  # 窗口贴边自动半屏
     };
