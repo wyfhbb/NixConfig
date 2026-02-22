@@ -28,7 +28,7 @@
     # 你需要手动修改 /etc/nix/nix.custom.conf 来添加相应的参数。
     enable = true;
 
-    package = pkgs.nix;
+    package = pkgs.nixVersions.nix_2_32;
 
     settings = {
       # 全局启用 flakes 和新式 nix 命令

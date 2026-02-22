@@ -5,6 +5,9 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
+    # 调试工具
+    binutils                  # nm, objdump, readelf 等二进制分析工具
+    strace                    # 系统调用跟踪
   ];
 
   # 添加vscode后端以及opencv等各种库的支持

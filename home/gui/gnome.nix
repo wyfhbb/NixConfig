@@ -164,6 +164,25 @@
   };
 
   # ────────────────────────────────────────────────
+  # Nautilus 侧边栏书签
+  # ────────────────────────────────────────────────
+  xdg.configFile."gtk-3.0/bookmarks".text = ''
+    file:///home/wyf/Documents
+    file:///home/wyf/Music
+    file:///home/wyf/Pictures
+    file:///home/wyf/Videos
+    file:///home/wyf/Downloads
+    file:/// Files
+  '';
+
+  # ────────────────────────────────────────────────
+  # Nautilus "Open as Administrator" Python 扩展
+  # 效果等同于 nautilus-admin，直接出现在右键菜单顶层
+  # 依赖 nautilus-python（NixOS GNOME 默认包含）
+  # ────────────────────────────────────────────────
+    home.file.".local/share/nautilus-python/extensions/open-as-admin.py".source = ./open-as-admin.py;
+
+  # ────────────────────────────────────────────────
   # 其他 Home Manager 常用 GNOME 相关
   # ────────────────────────────────────────────────
   home.packages = with pkgs; [

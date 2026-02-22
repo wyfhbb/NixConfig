@@ -43,6 +43,7 @@
     gnomeExtensions.tophat # 系统监视器扩展
     gnomeExtensions.compiz-alike-magic-lamp-effect # 窗口动画效果
     gnomeExtensions.transparent-window-moving
+    nautilus-python                 # Nautilus Python 扩展支持（open-as-admin 依赖）
   ];
 
   # ────────────────────────────────────────────────
