@@ -30,8 +30,8 @@
       edge-tiling = true;                  # 窗口贴边自动半屏
     };
 
-    "org/gnome/settings-daemon/plugins/power" = {
-      sleep-inactive-ac-type = "nothing";  # 插电不休眠（桌面机常用）
+    "org/gnome/desktop/session" = {
+      idle-delay = 1800;                   # 插电熄屏延迟：1800 秒（30 分钟）
     };
 
     "org/gnome/desktop/wm/preferences" = {
