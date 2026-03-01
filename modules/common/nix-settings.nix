@@ -16,7 +16,6 @@
     htop
     tree
     lazygit
-    nodejs_24
     pciutils
   ];
   nix = {
