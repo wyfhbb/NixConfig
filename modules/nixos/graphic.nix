@@ -89,10 +89,7 @@
     # Vulkan 设备选择：优先 Intel（设备索引 0 通常是集显）
     # 如果应用支持，可用此变量指定默认 Vulkan 设备
     # VK_LOADER_DEVICE_SELECT = "10de:*";  # 强制选择 NVIDIA
-  };
 
-  # 环境变量 - sessionVariables 更适合桌面会话
-  environment.sessionVariables = {
     # EGL 优先用 Mesa（Intel）
     __EGL_VENDOR_LIBRARY_FILENAMES = "/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json";
 

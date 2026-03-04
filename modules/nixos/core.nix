@@ -1,5 +1,5 @@
 # NixOS 基础配置（所有 Linux 通用）
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -27,9 +27,8 @@
   # 全局库路径
   # programs.nix-ld 只对通过 ld-linux 加载的程序生效；
   # 对于 dlopen() 动态加载（如 Electron/ANGLE 加载 libGL），需要 LD_LIBRARY_PATH
-  environment.sessionVariables = {
-    LD_LIBRARY_PATH = "${pkgs.libGL}/lib:/run/opengl-driver/lib";
-  };
+  # mkDefault 允许各主机（如 WSL）覆盖此值
+  environment.variables.LD_LIBRARY_PATH = lib.mkDefault "${pkgs.libGL}/lib:/run/opengl-driver/lib";
 
   services.openssh = {
     enable = true;
