@@ -303,6 +303,7 @@
         # Powerlevel10k 配置
         source ${./p10k.zsh}
         source ${./conda-init.zsh}
+        eval "$(direnv hook zsh)"    # direnv 集成
       '';
     };
   };
