@@ -4,7 +4,6 @@
 {
   # TODO: 导入所有模块
   imports = [
-    ../common/cli-apps.nix
     ../gui/terminal.nix
   ];
 

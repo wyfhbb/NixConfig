@@ -3,9 +3,8 @@
 
 {
   imports = [
-    # 通用
-    ../common/cli-apps.nix
     ../common/core-tools.nix
+    ../gui/package.nix
     # 带有 GUI 的配置
     ../gui/terminal.nix
     ../gui/input-method.nix

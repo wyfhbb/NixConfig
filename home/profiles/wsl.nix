@@ -3,7 +3,7 @@
 
 {
   imports = [
-    ../common/cli-apps.nix
+    ../gui/package.nix
     ../common/core-tools.nix
   ];
 

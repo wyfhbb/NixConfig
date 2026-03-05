@@ -18,11 +18,6 @@
     lazygit
     pciutils
   ];
-  # 服务端 NixOS configuration.nix 或 home-manager
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;  # 重要：性能优化，缓存nix环境
-  };
   nix = {
     # Determinate Nix 使用自己的守护进程来管理 Nix 安装,
     # 这会与 nix-darwin 的原生 Nix 管理冲突。

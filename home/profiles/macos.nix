@@ -4,7 +4,6 @@
 {
   # 导入通用模块
   imports = [
-    ../common/cli-apps.nix
     ../common/core-tools.nix
     ../gui/terminal.nix
   ];

@@ -2,12 +2,18 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    uv
+  ];
   # 添加本地二进制变量
   home.sessionPath = [ 
     "$HOME/.local/bin"
   ];
-
   programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;  # 重要：性能优化，缓存nix环境
+    };
     # 现代 vim
     neovim = {
       enable = true;
