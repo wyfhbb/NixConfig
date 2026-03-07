@@ -18,6 +18,7 @@
     ../../modules/nixos/graphic.nix
     ../../modules/nixos/gnome.nix
     ../../modules/nixos/intelFix.nix
+    ../../modules/nixos/cs35l56Fix.nix
     # 系统硬件适配设置
     /etc/nixos/hardware-configuration.nix
   ];
