@@ -62,7 +62,7 @@
     [Desktop Entry]
     Type=Application
     Name=Start Proxies
-    Exec=/home/${username}/Startup/start-proxies.sh
+    Exec=bash -c '/home/${username}/NixConfig/home/PassWall2gfw/update.sh && /home/${username}/NixConfig/home/PassWall2gfw/start.sh'
     X-GNOME-Autostart-enabled=true
   '';
 
