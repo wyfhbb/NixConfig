@@ -191,7 +191,7 @@ in
       users = [ "wyf" ];
       commands = [
         {
-          command = "/home/wyf/NixConfig/home/PassWall2gfw/mihomo/mihomo";
+          command = "/home/wyf/NixConfig/home/PassWall2gfw/mihomo/mihomo *";
           options = [ "NOPASSWD" ];
         }
       ];
