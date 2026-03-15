@@ -33,6 +33,9 @@ in
   # 列出系统环境中已安装的软件包。查询可运行：
   # 示例：$ nix search wget
   environment.systemPackages = with pkgs; [
+    lazygit
+    pciutils
+    ntfs3g
     # 启用xwayland支持
     xwayland-satellite
     google-chrome
