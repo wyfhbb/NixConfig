@@ -9,6 +9,6 @@ let
 in
 {
   home.packages = with pkgs; [
-
+      nodejs_24
   ];
 }
