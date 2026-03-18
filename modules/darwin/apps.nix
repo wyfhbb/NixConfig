@@ -43,7 +43,7 @@
       "curl" # 不要通过 nixpkgs 安装 curl，它在 macOS 上工作不正常！
       "wget"
       "sox" # 处理音频文件
-      "nodejs_24" # 通过 Homebrew 安装 Node.js，确保它与 npm 一起安装，并且版本是最新的。
+      "nodejs"
     ];
 
     casks = [
