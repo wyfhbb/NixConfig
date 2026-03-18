@@ -57,12 +57,6 @@ in
     intel-gpu-tools           # 查看 Intel 核显功耗 (intel_gpu_top)
     # unstable 版本
     unstable.vscode
-    # Termius：修复 libGL 库路径
-    # - 内置 Electron 21（Chrome 106）不认 NIXOS_OZONE_WL，默认走 XWayland
-    #   → XMODIFIERS/XIM 路径，fcitx5 输入法正常工作
-    # - 其 zwp_text_input_v3 实现有 bug（Chrome 108+ 才修），强行走 Wayland 反而坏掉输入法
-    # - --prefix LD_LIBRARY_PATH：把 libglvnd 路径嵌入 wrapper，
-    #   避免依赖 sessionVariables（需重新登录才生效）
     (unstable.termius.overrideAttrs (old: {
       nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
       postFixup = (old.postFixup or "") + ''
