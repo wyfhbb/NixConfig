@@ -12,6 +12,5 @@ in
     nodejs_24
     pnpm
     unstable.claude-code
-    unstable.codex
   ];
 }
