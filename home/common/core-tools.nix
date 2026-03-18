@@ -2,6 +2,9 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    uv
+  ];
   # 添加本地二进制变量
   home.sessionPath = [ 
     "$HOME/.local/bin"
