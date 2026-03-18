@@ -23,7 +23,7 @@
     # home-manager: 用户环境管理工具（管理 dotfiles、软件等）
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs"; # 让 home-manager 使用我们的 nixpkgs
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # nix-darwin: macOS 系统管理工具

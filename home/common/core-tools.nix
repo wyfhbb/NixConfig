@@ -1,13 +1,32 @@
 # 核心命令行工具（所有平台通用）
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
 {
   home.packages = with pkgs; [
     uv
+    nodejs_24
+    # pnpm
+    unstable.claude-code
   ];
+
+  home.file.".npmrc".text = ''
+    prefix=''${HOME}/.npm
+    color=true
+    fund=false
+    audit=false
+    save-exact=true
+  '';
+
   # 添加本地二进制变量
-  home.sessionPath = [ 
+  home.sessionPath = [
     "$HOME/.local/bin"
+    "$HOME/.npm/bin"
   ];
   programs = {
     direnv = {
@@ -312,5 +331,6 @@
         eval "$(direnv hook zsh)"    # direnv 集成
       '';
     };
+
   };
 }
