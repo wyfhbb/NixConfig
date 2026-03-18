@@ -4,7 +4,7 @@
 {
   imports = [
     ../common/core-tools.nix
-    ../gui/package.nix
+    ../common/package.nix
     # 带有 GUI 的配置
     ../gui/terminal.nix
     ../gui/input-method.nix
