@@ -5,15 +5,9 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
-    # 调试工具
     binutils                  # nm, objdump, readelf 等二进制分析工具
     strace                    # 系统调用跟踪
-    unzip                     # 解压工具
     lsof                      # 列出打开的文件和网络连接
-    just
-    fastfetch
-    htop
-    tree
   ];
 
   # 添加vscode后端以及opencv等各种库的支持

@@ -11,6 +11,11 @@
   # 允许安装不自由的软件包
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    just
+    fastfetch
+    htop
+    tree
+    unzip                     # 解压工具
   ];
   nix = {
     # Determinate Nix 使用自己的守护进程来管理 Nix 安装,
