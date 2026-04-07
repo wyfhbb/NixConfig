@@ -63,6 +63,7 @@
       "logi-options+"
       "docker-desktop"
       "baidunetdisk"
+      "postman"
     ];
   };
 }
