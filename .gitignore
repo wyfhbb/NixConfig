@@ -38,3 +38,6 @@ startup_scripts/
 
 # vscode 设置
 .vscode/
+
+# oh my codex 设置
+.omx/
