@@ -44,6 +44,7 @@
       "wget"
       "sox" # 处理音频文件
       "nodejs"
+      "unar"
     ];
 
     casks = [
