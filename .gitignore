@@ -41,3 +41,6 @@ startup_scripts/
 
 # oh my codex 设置
 .omx/
+
+# oh my claude code 设置
+.omc/

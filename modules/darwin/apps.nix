@@ -65,6 +65,7 @@
       "docker-desktop"
       "baidunetdisk"
       "postman"
+      "obs"
     ];
   };
 }
