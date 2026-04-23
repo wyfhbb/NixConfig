@@ -175,25 +175,32 @@ in
   # 参考: https://wiki.nixos.org/wiki/Mihomo
   networking.firewall = {
     enable = true;
-    # 将 TUN 设备添加到受信任接口，避免被防火墙拦截
     trustedInterfaces = [ "Meta" ];
-    # 禁用反向路径过滤，允许 TUN 设备的流量正常路由
     checkReversePath = false;
   };
 
-  # 配置 sudo 免密执行 mihomo
-  # 允许用户测试不同版本的 mihomo，不托管给系统
-  security.sudo.extraRules = [
-    {
-      users = [ "wyf" ];
-      commands = [
-        {
-          command = "/home/wyf/NixConfig/home/PassWall2gfw/mihomo/mihomo *";
-          options = [ "NOPASSWD" ];
-        }
+  # Mihomo 系统级代理服务（TUN 模式）
+  # 用 unstable.mihomo 但 bump 到 1.19.24 以获得 xhttp 支持
+  services.mihomo = {
+    enable = true;
+    package = unstable.mihomo.overrideAttrs (old: rec {
+      version = "1.19.24";
+      src = pkgs.fetchFromGitHub {
+        owner = "MetaCubeX";
+        repo = "mihomo";
+        rev = "v${version}";
+        hash = "sha256-RQ6ZnOkIJyIA7n/AhHxOEtWcoXbyusc0GwIHr4VKUxM=";
+      };
+      vendorHash = "sha256-wAd5VKpQT9aE/S3J/6gLlkYs56TqR3b+H0s+peOQ3R4=";
+      ldflags = [
+        "-s"
+        "-w"
+        "-X github.com/metacubex/mihomo/constant.Version=${version}"
       ];
-    }
-  ];
+    });
+    configFile = ../../PassWall2gfw/backup/buctdns.yaml;
+    tunMode = true;
+  };
 
   # 该值决定了系统中有状态数据（如文件位置和数据库版本）
   # 的默认设置所基于的 NixOS 版本。建议保留为首次安装

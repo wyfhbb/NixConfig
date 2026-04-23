@@ -57,15 +57,6 @@
     force = true;
   };
 
-  # 开机自启动代理脚本
-  xdg.configFile."autostart/start-proxies.desktop".text = ''
-    [Desktop Entry]
-    Type=Application
-    Name=Start Proxies
-    Exec=/home/${username}/NixConfig/home/PassWall2gfw/start.sh
-    X-GNOME-Autostart-enabled=true
-  '';
-
   # 更改配置时优雅地重新加载系统单元
   systemd.user.startServices = "sd-switch";
 }

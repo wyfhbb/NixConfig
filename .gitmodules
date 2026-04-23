@@ -1,3 +1,3 @@
-[submodule "home/PassWall2gfw"]
-	path = home/PassWall2gfw
+[submodule "PassWall2gfw"]
+	path = PassWall2gfw
 	url = git@github.com:wyfhbb/PassWall2gfw.git

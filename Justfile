@@ -25,7 +25,7 @@ init hostname:
     sudo ./result/sw/bin/darwin-rebuild switch --flake .#darwin \
       --extra-experimental-features 'nix-command flakes'
   else
-    sudo nixos-rebuild switch --flake .#{{hostname}} \
+    sudo nixos-rebuild switch --flake ".?submodules=1#{{hostname}}" \
       --experimental-features 'nix-command flakes' \
       --impure
   fi
@@ -41,7 +41,7 @@ rebuild hostname:
       --extra-experimental-features 'nix-command flakes'
     sudo ./result/sw/bin/darwin-rebuild switch --flake .#darwin
   else
-    sudo nixos-rebuild switch --flake .#{{hostname}} --impure
+    sudo nixos-rebuild switch --flake ".?submodules=1#{{hostname}}" --impure
   fi
 
 # 调试模式构建系统配置（显示详细信息和错误追踪）
@@ -54,20 +54,20 @@ rebuild-debug hostname:
       --extra-experimental-features 'nix-command flakes'
     sudo ./result/sw/bin/darwin-rebuild switch --flake .#darwin --show-trace --verbose
   else
-    sudo nixos-rebuild switch --flake .#{{hostname}} --show-trace --verbose --impure
+    sudo nixos-rebuild switch --flake ".?submodules=1#{{hostname}}" --show-trace --verbose --impure
   fi
 
 # 测试 NixOS 配置（不切换，仅限 Linux）
 # 用法: just test wsl | just test vps-server | just test desktop-linux
 [group('build')]
 test hostname:
-  sudo nixos-rebuild test --flake .#{{hostname}} --impure
+  sudo nixos-rebuild test --flake ".?submodules=1#{{hostname}}" --impure
 
 # 构建 NixOS 配置（不切换，仅限 Linux）
 # 用法: just build wsl | just build vps-server | just build desktop-linux
 [group('build')]
 build hostname:
-  sudo nixos-rebuild build --flake .#{{hostname}} --impure
+  sudo nixos-rebuild build --flake ".?submodules=1#{{hostname}}" --impure
 
 ############################################################################
 #
