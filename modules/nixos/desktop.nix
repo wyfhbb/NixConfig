@@ -57,13 +57,14 @@ in
     intel-gpu-tools           # 查看 Intel 核显功耗 (intel_gpu_top)
     # unstable 版本
     unstable.vscode
-    (unstable.termius.overrideAttrs (old: {
-      nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
-      postFixup = (old.postFixup or "") + ''
-        wrapProgram $out/bin/termius-app \
-          --prefix LD_LIBRARY_PATH : "${pkgs.libGL}/lib"
-      '';
-    }))
+    # (unstable.termius.overrideAttrs (old: {
+    #   nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
+    #   postFixup = (old.postFixup or "") + ''
+    #     wrapProgram $out/bin/termius-app \
+    #       --prefix LD_LIBRARY_PATH : "${pkgs.libGL}/lib"
+    #   '';
+    # }))
+    unstable.termius
     unstable.qq
     unstable.wechat
     unstable.wemeet
